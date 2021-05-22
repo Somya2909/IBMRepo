@@ -1,0 +1,185 @@
+<html>
+<title>User login</title>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script>
+        const hostname = "https://helpdesk.verify.ibm.com";
+		const client_id = "cb8e5ceb-84b0-4869-b94a-b94a8421c962";
+		var a_token ="";
+		var userName="";
+
+        var urlParams = new URLSearchParams(window.location.search);
+
+        var target = null;
+        if (urlParams.has('Target')) {
+           target = urlParams.get('Target');
+        } else {
+           target = `./Home.html`;
+        }
+
+	function establishSession(token) {
+
+		$.ajax({
+		    type: "GET",
+		    url: `${hostname}/v1.0/auth/session`,
+		    "headers": {
+			    "Authorization": `Bearer ${token}`
+		  	},
+		    xhrFields: {
+		        withCredentials: true
+		    },
+		    success: function(data, status, xhr) {
+		    	console.log("Data: " + data);
+		    	//window.location.replace(`${hostname}/usc`);
+		    	window.location.replace(target);
+		    }
+		});
+	}
+
+	function login(form) {
+
+	    var un = encodeURI(form.Username.value);
+	    var pw = form.Password.value;
+	    var data = `grant_type=password&client_id=${client_id}&username=${un}&password=${pw}`;
+        userName = un;
+		sessionStorage.setItem("userName",userName);
+
+		var xhr = new XMLHttpRequest();
+		xhr.withCredentials = true;
+
+		xhr.addEventListener("readystatechange", function () {
+		  	if (this.readyState === 4) {
+				  var response = JSON.parse(this.responseText);
+				  a_token = response.access_token;
+				  sessionStorage.setItem("a_token",a_token);
+			    console.log(response);
+			    loginResults(this.responseText);
+			    establishSession(response.access_token, target);
+		  	}
+		});
+        
+		xhr.open("POST", `${hostname}/oidc/endpoint/default/token`);
+		xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+		xhr.send(data);
+	}
+
+	window.addEventListener("load", function() {
+	    var loginForm = document.getElementById("LoginForm");
+	    loginForm.addEventListener("submit", function() {
+	         login(loginForm);
+	     });
+	 });
+
+	function loginResults(response) {
+	    var loggedIn = document.getElementById("LoggedIn");
+	    var badLogin = document.getElementById("BadLogin");
+	    var form = document.getElementById("LoginForm");
+	    console.log(response.indexOf("error"));
+	    if (response.indexOf("error") == -1) {
+	        loggedIn.style.display = "block";
+	        form.style.display = "none";
+	        badLogin.style.display = "none";
+	    } else {
+	        badLogin.style.display = "block";
+	    }
+	}
+
+	
+	</script>
+	<link rel="stylesheet" type="text/css" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+	<script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+	<style>
+		.tx--tile {
+			background-color: #1a1927;
+			margin-top:1rem;
+		}
+		.tx--title {
+
+      margin-top:2rem;
+      color: rgb(0, 0, 0);
+		}
+		.tx--m-t-1 {
+			margin-top:1rem;
+		}
+	</style>
+</head>
+
+<body class="bodybg" style="font-family: IBM Plex Sans;  position: relative; background-color: rgb(255, 255, 255);display: flex;">
+	<div class="left" style="display: flex;
+	flex-direction: column;
+	flex: 0.45;
+	background-image: url(assets/databg.png);
+	background-repeat: no-repeat;
+	background-position:25% 50%;
+	background-size: 100%;
+	background-color: #f2f4f8;
+	">
+		
+	</div>
+
+	<div class="bx--grid right " >
+	  <div class="bx--row cs-content">
+	  	<!-- box -->
+	    <div >
+			<img src="/assets/Help.png" width="100" height="100" style="margin-left: auto; margin-right: auto; width: auto;display: block;padding-top: 1rem;">
+	    	<h2 class="tx--title" style="text-align: center; font-size:1.5rem;">Welcome to Help Desk, please login!</h2>
+			<h3  class="tx--title" style="text-align: center; font-size: 1rem;">Sign in with Cloud Directory</h3>
+			<div class="bx--tile tx--tile" style="outline-color: #262626;">
+	    		<form id="LoginForm" onsubmit="return false">
+			        <div class="bx--form-item">
+					  <label for="Username" class="bx--label" style="color: #ffffff; letter-spacing: .1rem;">Username</label>
+					  <input
+					    required
+					    id="Username"
+					    type="text"
+					    class="bx--text-input"
+					    placeholder="Enter username here"
+					  />
+					</div>
+				    <div class="bx--form-item tx--m-t-1">
+				      <label for="Password" class="bx--label" style="color: #ffffff; letter-spacing: .1rem;">Password</label>
+				      <input
+				        required
+				        id="Password"
+				        type="password"
+				        class="bx--text-input"
+				        placeholder="Enter password here"
+				      />
+				    </div>
+				    <button class="bx--btn bx--btn--primary tx--m-t-1" type="submit">Login</button>
+				</form>
+				<div data-notification class="bx--inline-notification bx--inline-notification--error" role="alert" id="BadLogin" style="display:none">
+				    <div class="bx--inline-notification__details">
+				          <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-notification__icon" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M10,1c-5,0-9,4-9,9s4,9,9,9s9-4,9-9S15,1,10,1z M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z"></path><path d="M13.5,14.5l-8-8l1-1l8,8L13.5,14.5z" data-icon-path="inner-path" opacity="0"></path></svg>
+				        <div class="bx--inline-notification__text-wrapper">
+				          <p class="bx--inline-notification__title">Login error!</p>
+				          <p class="bx--inline-notification__subtitle">The login information you entered does not match an account in our records. Please try again.</p>
+				        </div>
+				    </div>
+			    </div>
+			    <div id="LoggedIn" style="display:none">
+			        <div data-inline-loading class="bx--inline-loading" role="alert" aria-live="assertive">
+					  <div class="bx--inline-loading__animation">
+					    <div data-inline-loading-spinner class="bx--loading bx--loading--small">
+					      <svg class="bx--loading__svg" viewBox="-75 -75 150 150">
+					        <circle class="bx--loading__background" cx="0" cy="0" r="30" />
+					        <circle class="bx--loading__stroke" cx="0" cy="0" r="30"/>
+					      </svg>
+					    </div>
+					    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--inline-loading__checkmark-container" hidden="" data-inline-loading-finished="" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8,1C4.1,1,1,4.1,1,8c0,3.9,3.1,7,7,7s7-3.1,7-7C15,4.1,11.9,1,8,1z M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z"></path><path d="M7,11L4.3,8.3l0.9-0.8L7,9.3l4-3.9l0.9,0.8L7,11z" data-icon-path="inner-path" opacity="0"></path></svg>
+					  </div>
+					  <p data-inline-loading-text-active class="bx--inline-loading__text" style="color: #ffffff;">Logging in...</p>
+					</div>
+			    </div>
+			</div>
+			
+	    <!-- box -->
+	    </div>
+	  </div>
+    </div>
+  </grid>
+  <footer class="foot">
+
+  </footer>
+</body>
+</html>

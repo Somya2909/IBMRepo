@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"/>
+  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet"/>
+  <!-- <link rel="stylesheet" href="sweetalert2.min.css" /> -->
+  <!-- <script src="{{ asset('assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script> -->
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <script>
+    function openSlideMenu() {
+      var menu = document.getElementById("menu");
+      var content = document.getElementById("content");
+
+      if (menu.style.width == "300px" && content.style.width == "300px") {
+        menu.style.width = "0";
+        content.style.width = "0";
+      } else {
+        menu.style.width = "300px";
+        content.style.width = "300px";
+      }
+    }
+  </script>
+  <!-- <scrip src="bootstrap-switch.js"></scrip> -->
+  <style>
+    .user {
+      /* padding: 1rem; */
+      margin-bottom: 1rem;
+      background-color:#f2f4f8;
+    }
+
+    .info {
+      padding-bottom: 2px;
+      color: black;
+    }
+  </style>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 user-scalable=no"
+    />
+    <title>Help Desk</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <link rel="canonical" href="http://www.ibm.com/" />
+    <link rel="SHORTCUT ICON" href="//www.ibm.com/favicon.ico" />
+    <meta name="robots" content="index,follow" />
+    <meta name="description" content="IBM id Sign-in Template refresh" />
+    <meta name="keywords" content="Sign-in Page IBM id" />
+    <meta name="geo.country" content="US" />
+    <meta name="dcterms.date" content="2014-07-23" />
+    <meta name="dcterms.rights" content="&copy; Copyright IBM Corp. 2018" />
+
+    <script>
+      (window.App = window.App || {}),
+        (window.App.locale = document.documentElement.lang),
+        "en-US" === window.App.locale && (window.App.locale = "en");
+    </script>
+    <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+    <link
+      href="//1.www.s81c.com/common/v18/css/grid-fluid.css"
+      rel="stylesheet"
+    />
+    <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
+    <script
+      type="application/javascript"
+      src="https://www.ibm.com/account/ibmidutil/js/idaas/duo/locales/en.js"
+    ></script>
+    <script
+      type="application/javascript"
+      src="https://www.ibm.com/account/ibmidutil/js/idaas/duo/assets/prod.client_ids.js"
+    ></script>
+    <link
+      href="https://www.ibm.com/account/ibmidutil/js/idaas/duo/static/css/main.css"
+      rel="stylesheet"
+    />
+    <script src="https://use.fontawesome.com/003fb05841.js"></script>
+    <script type="text/javascript">
+      function preventBack() {
+        window.history.forward();
+      }
+      setTimeout("preventBack()", 0);
+      window.onunload = function () {
+        null;
+      };
+    </script>
+  </head>
+
+  <body
+    class="bg"
+    style="
+    background-image: none;
+      background-color:#f2f4f8;
+      color: rgb(26, 23, 19);
+      overflow-x: hidden;
+      font-family: 'IBM Plex Sans', sans-serif;
+    "
+    scroll="no"
+  >
+    <!-- Header starts -->
+    <header style="background-color: #323232; height: 50px" class="fixed-header" >
+      <div class="header_bar">
+        <span class="slide" id="navigationToggler">
+          <a onClick="openSlideMenu()" id="togg">
+            <i class="fa fa-bars fa-2x"></i>
+            <script>
+              $("#togg").click(function (event) {
+                $(this).find("i").toggleClass("fa fa-times fa-2x");
+                $(this).find("i").toggleClass("fa fa-bars fa-2x");
+              });
+            </script>
+          </a>
+        </span>
+
+        <div class="pull-left">
+          <a href="Home.html"><img class="ibm_logo" src="assets/IBM_logo.png" /></a>
+        </div>
+        <!-- Profile and logout -->
+        <Navbar dark expand="xxl" class="pull-right" id="logout">
+          <nav class="navbar navbar-expand-xxl">
+            <button
+              class="fa fa-user fa-lg navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapsibleNavbar2"
+              style="outline-width: 0"
+            >
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavbar2">
+              <ul class="navbar-nav" style="list-style-type: none">
+                <p></p>
+                <div>
+                  <strong><li class="nav-item" id="name"></li></strong>
+                </div>
+                <div>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Profile.html">Profile</a>
+                  </li>
+                </div>
+                <div>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      onclick="logout()"
+                      href="Redirection.html"
+                      >Log out
+                    </a>
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </nav>
+        </Navbar>
+      </div>
+    </header>
+    <!-- Header ends here -->
+
+    <div>
+
+      <div class="container" style="padding-top: 1px; padding-bottom: 200px">
+        <div>
+          <h1
+            id="Users"
+            style="font-size: x-large; text-align: center; margin-top: 90px"
+          >
+            Manage Users
+          </h1>
+        </div>
+
+        <nav class="breadcrumb" style="background-color:lightgray">
+          <a class="breadcrumb-item" href="Home.html">Home</a>
+          <a class="breadcrumb-item active">Manage Users</a>
+        </nav>
+
+
+        <Navbar>
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <!-- Links -->
+            <div class="navbar-nav" style="list-style-type: none">
+              <li class="nav-item nav-link" style="list-style-type: none">
+                <div class="dropdown" style="list-style-type: none">
+                  <button
+                    class="btn btndrop dropdown-toggle"
+                    style="width: 155px"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Create User
+                  </button>
+
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                    style="background-color: #f2f4f8;
+                    border: none;
+                    position: relative;"
+                  >
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block btn-xs"
+                        data-toggle="modal"
+                        data-target="#myModalCreateUser"
+                      >
+                        Create User
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item nav-link">
+                <div class="dropdown">
+                  <button
+                    class="btn btndrop dropdown-toggle"
+                    style="width: 155px"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Update User
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                    style="background-color: transparent;
+                    border: none;
+                    position: relative;"
+                  >
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block btn-xs"
+                        data-toggle="modal"
+                        data-target="#myModalUpdateUser"
+                      >
+                        Update User
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item nav-link">
+                <div class="dropdown">
+                  <button
+                    class="btn btndrop dropdown-toggle"
+                    style="width: 155px"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Delete User
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                    style="background-color: transparent;
+                    border: none;
+                    position: relative;"
+                  >
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block btn-xs"
+                        data-toggle="modal"
+                        data-target="#myModalDeleteUser"
+                      >
+                        Delete User
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <pre>            </pre>
+              <li style="display: flex;flex-direction: row;">
+                <form>
+                  <input class="searchInput" id="searchedUserId" style="flex:0.9;justify-content: center;align-items: center;margin:10px;vertical-align: middle; color: black;width:400px;"type="text" placeholder="Search by UserId"/>
+                  <button
+                  type="button"
+                  data-toggle="modal"
+                  data-target="#myModalSearchUser"
+                  data-dismiss="modal"
+                  onclick="search()"class="fa fa-lg fa-search" style="flex:0.1;background-color:rgba(255, 255, 255, 0);padding: 5px 5px;outline: none;height: fit-content;vertical-align: middle;border: none;color: black;"></button>
+                  
+                </form>
+                
+              </li>             
+            </div>
+          </nav>
+        </Navbar>
+
+        <div id="content">
+          <div
+            id="menu"
+            class="nav"
+            style="overflow-y: hidden; display: flex; flex-direction: column"
+          >
+          <button class="btn btn-block" ><a href="Home.html">Home</a></button>
+          <button class="btn btn-block" ><a href="Users.html">Manage Users</a></button>
+          <button class="btn btn-block" ><a href="ManageAuthenticationFactors.html">Manage Authentication</a></button>
+          <button class="btn btn-block" ><a href="FAQs.html">FAQs</a></button>
+          <button class="btn btn-block" ><a href="AboutUs.html">About Us</a></button>
+          </div>
+        </div>
+        <!-- Sure Delete User Modal-->
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                <div class="modal-container"  style="color: black;">
+                  <p>Are you sure you want to delete this user?</p>
+                  <p id="deletedOrNot"></p>
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    onClick="deleteUser()"
+                  >
+                    Yes
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    data-dismiss="modal"
+                  >
+                    No
+                  </button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <!--Delete User Modal -->
+          <div id="myModalDeleteUser" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 300px">
+              <!-- Modal content-->
+              <div class="modal-content" style="z-index: -1">
+                <div class="modal-body">
+                  <div class="modal-container">
+                    <p class="modal-title-body" style="font-size: larger;">Delete user</p>
+                    <label for="deleteUserId">User Id</label>
+                    <div style="display: flex; justify-content: center;">
+                      <input class="searchInput"
+                        type="text"
+                        id="deleteUserId"
+                        placeholder="Enter User Id"
+                      />
+                      <button
+                        class="btn btn-create"
+                        style="margin-left: 2px"
+                        onClick="getDataOfUserToBeDeleted()"
+                      >
+                        Go
+                      </button>
+                    </div>
+                    <br /><br />
+                  <div style="color: black;">
+                    <p id="delId"></p>
+                    <p id="delUserName"></p>
+                    <p id="delEmail"></p>
+                    <p id="deleteId"></p>
+                  </div> 
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  
+                  
+                  <button
+                    id="deleteButtonAdj"
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Search Modal-->
+          <div id="myModalSearchUser" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 300px">
+              <!-- Modal content-->
+              <div class="modal-content" style="z-index: -1">
+                <div class="modal-body">
+                  <div class="modal-container">
+                   
+                   <p class="modal-title-body" style="font-size: larger;">User Details</p>
+                   <p  style="color:black" id="searchId"></p>
+                   <p style="color: black; font-weight: 200;" id="searchUserId"></p>
+                   <p style="color: black; font-weight: 200;" id="searchName"></p>
+                   <p style="color: black; font-weight: 200;" id="searchEmail"></p>
+                   <p style="color: black; font-weight: 200;" id="searchMobile"></p>
+                   <p style="color: black; font-weight: 200;" id="searchStreetaddress"></p>
+                   <p style="color: black; font-weight: 200;" id="searchLocality"></p>
+                   <p style="color: black; font-weight: 200;" id="searchRegion"></p>
+                   <p style="color: black; font-weight: 200;" id="searchPostalcode"></p>
+                   <p style="color: black; font-weight: 200;" id="searchCountry"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <!--Create User Modal-->
+          <div
+          class="modal fade"
+          id="myModalCreateUser"
+          tabindex="-1"
+          aria-labelledby="createUserModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                
+        <div class="modal-container" style="display: flex;flex-direction: column;">
+          <p class="modal-title-body">Create user</p>
+        
+          <label class="modal-inputs" for="test_username" >username*</label>
+          <input id="test_username" type="text" placeholder="username" required value=""/>
+          <label class="modal-inputs" for="test_firstname">firstname*</label>
+          <input id="test_firstname" type="text" placeholder="first name" required value=""/>
+          <label class="modal-inputs" for="test_middlename">middlename</label>
+          <input id="test_middlename" type="text" placeholder="middle name" required value=""/>
+          <label class="modal-inputs" for="test_surname">surname*</label>
+          <input id="test_surname" type="text" placeholder="surname" required value=""/>
+          <label class="modal-inputs" for="test_email"><email>Email*</email></label>
+          <input id="test_email" type="email" placeholder="email" required value=""/>
+          <label class="modal-inputs" for="test_phone"><phone>Phone Number</phone></label>
+          <input id="test_phone" type="text" placeholder="phone" required value=""/>
+          <label class="modal-inputs" for="test_phone">locality</label>
+          <input id="test_locality" type="text" placeholder="locality" required value=""/>
+          <label class="modal-inputs" for="test_country">country</label>
+          <input id="test_country" type="text" placeholder="country" required value=""/>
+          <label class="modal-inputs" for="test_streetaddress">street address</label>
+          <input id="test_streetaddress" type="text" placeholder="streetaddress" required value=""/>
+          <label class="modal-inputs" for="test_postalcode">postalcode</label>
+          <input id="test_postalcode" type="text" placeholder="postalcode" required value=""/>
+          <label class="modal-inputs" for="test_region">region</label>
+          <input id="test_region" type="text" placeholder="region" required value=""/><br>
+          <h3 style="color: red;">* Mark fields are required</h3>
+          <p style="color: black;" id="userCreated"></p>    
+        
+      </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-create"  onclick="createUser()">Create</button>
+                <button type="button" class="btn btn-close" data-dismiss="modal"> Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!--Update User Modal-->
+        <div
+          class="modal fade"
+          id="myModalUpdateUser"
+          tabindex="-1"
+          aria-labelledby="updateUserModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                
+        <div class="modal-container" style="display: flex;flex-direction: column;">
+          
+          <label class="modal-title-body" for="getUserDataId">update user</label>
+          <div style="display: flex; justify-content: center;">
+          
+            <input class="searchInput" name="text1" style="display: flex; flex:1;" id="getUserDataId" type="text" placeholder="user id" /><br>
+            <button style="display:flex; margin-left: 2rem;" type="submit" class="btn btn-create btn-xs" onclick="getUserData()">Search</button>
+         
+          </div>          
+          <p style="color: black;" id="idFound"></p>
+          <p id="callUpdate"></p>
+          <!-- <p class="modal-input" style="font-size: larger; text-align: center;"></p>
+
+          <label class="modal-inputs" for="update_username">username*</label>
+          <input id="update_username" type="text" placeholder="username" required value=""/>
+          <label class="modal-inputs" for="update_firstname">firstname*</label>
+          <input id="update_firstname" type="text" placeholder="first name" required value=""/>
+          <label class="modal-inputs" for="update_middlename">middlename*</label>
+          <input id="update_middlename" type="text" placeholder="middle name" required value=""/>
+          <label class="modal-inputs" for="update_surname">surname*</label>
+          <input id="update_surname" type="text" placeholder="surname" required value=""/>
+          <label class="modal-inputs" for="update_email">email*</label>
+          <input id="update_email" type="email" placeholder="email" required value=""/>
+          <label class="modal-inputs" for="update_phone">phone*</label>
+          <input id="update_phone" type="text" placeholder="phone" required value=""/>
+          <label class="modal-inputs" for="update_phone">locality*</label>
+          <input id="update_locality" type="text" placeholder="locality" required value=""/>
+          <label class="modal-inputs" for="update_country">country*</label>
+          <input id="update_country" type="text" placeholder="country" required value=""/>
+          <label class="modal-inputs" for="update_streetaddress">street address*</label>
+          <input id="update_streetaddress" type="text" placeholder="streetaddress" required value=""/>
+          <label class="modal-inputs" for="update_postalcode">postalcode*</label>
+          <input id="update_postalcode" type="text" placeholder="postalcode" required value=""/>
+          <label class="modal-inputs" for="update_region">region*</label>
+          <input id="update_region" type="text" placeholder="region" required value=""/><br>
+          
+          <p style="color: black;" id="userUpdated"></p>
+         -->
+      </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-info"
+                  data-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+        
+
+          <!--Email OTP Enrollment Modal -->
+
+          
+        
+        
+
+          <!--Resend Email Otp Modal -->
+          <div
+          class="modal fade"
+          id="myModalUpdateUserFinal"
+          tabindex="-1"
+          aria-labelledby="updateUserFinalModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-body">
+                
+        <div class="modal-container" style="display: flex;flex-direction: column;">
+          <p class="modal-title-body">Update user</p>
+        
+          <p class="modal-input" style="font-size: larger; text-align: center;"></p>
+          <label class="modal-inputs" for="update_username">username*</label>
+          <input id="update_username" type="text" placeholder="username" required value=""/>
+          <label class="modal-inputs" for="update_firstname">firstname*</label>
+          <input id="update_firstname" type="text" placeholder="first name" required value=""/>
+          <label class="modal-inputs" for="update_middlename">middlename*</label>
+          <input id="update_middlename" type="text" placeholder="middle name" required value=""/>
+          <label class="modal-inputs" for="update_surname">surname*</label>
+          <input id="update_surname" type="text" placeholder="surname" required value=""/>
+          <label class="modal-inputs" for="update_email">email*</label>
+          <input id="update_email" type="email" placeholder="email" required value=""/>
+          <label class="modal-inputs" for="update_phone">phone*</label>
+          <input id="update_phone" type="text" placeholder="phone" required value=""/>
+          <label class="modal-inputs" for="update_phone">locality*</label>
+          <input id="update_locality" type="text" placeholder="locality" required value=""/>
+          <label class="modal-inputs" for="update_country">country*</label>
+          <input id="update_country" type="text" placeholder="country" required value=""/>
+          <label class="modal-inputs" for="update_streetaddress">street address*</label>
+          <input id="update_streetaddress" type="text" placeholder="streetaddress" required value=""/>
+          <label class="modal-inputs" for="update_postalcode">postalcode*</label>
+          <input id="update_postalcode" type="text" placeholder="postalcode" required value=""/>
+          <label class="modal-inputs" for="update_region">region*</label>
+          <input id="update_region" type="text" placeholder="region" required value=""/><br>
+          
+          <p style="color: black;" id="userUpdated"></p>
+          
+      </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-create"  onclick="updateUser()">Update</button>
+                <button type="button" class="btn btn-close" data-dismiss="modal"> Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+          <!--SMS OTP Enrollment Modal -->
+
+          <!--Resend SMS Otp Modal -->
+
+          <div id="total"></div>
+
+          <div
+            class="container"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              grid-auto-rows: auto;
+              grid-gap: 1rem;
+              place-items: center;
+              
+            "
+          >
+            <p id="userinfo"></p>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+        var clientId = "3689f9f4-7cf8-491b-abfd-6483ba0c3f4d";
+        var a_token = sessionStorage.getItem("a_token");
+        var token = a_token;
+        var trial = sessionStorage.getItem("trial");
+        var emailOtpId,
+          emailValidatorId,
+          smsOtpId,
+          smsValidatorId,
+          emailIdToBeDeleted,
+          updateUserId;
+
+        fetch(`https://helpdesk.verify.ibm.com/v2.0/Users`, {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${trial}`,
+            "content-type": "application/scim+json",
+            accept: "application/scim+json",
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            document
+              .querySelector("#total")
+              .insertAdjacentHTML(
+                "beforebegin",
+                `<p class="totalusers" ><b>Total users: ${data.totalResults}</p>`
+              );
+            const html = data.Resources.map((user) => {
+              if (user.hasOwnProperty("phoneNumbers")) {
+                return `
+            <div class="user">
+                    
+                            <div class="card card-border" style="width: 18rem;height:22rem;">
+                                <div class="card-body">
+                                  <h5 class="card-title"style="text-transform:capitalize; color:black; font-weight:bold;">${user.name.formatted}</h5>
+                                  <div class="card-text"  >
+                                    <p class="info"><b>User Name:</b> ${user.userName}</p>
+                                    <p class="info"><b>Full Name:</b> ${user.name.formatted}</p>
+                                    <p class="info"><b>User Id:</b> ${user.id}</p>
+                                    <p class="info"><b>Active:</b> ${user.active}</p>
+                                    <p class="info"><b>Email Id:</b> ${user.emails[0].value}</p>
+                                    <p class="info"><b>Phone No. :</b> ${user.phoneNumbers[0].value}</p>
+                                 </div>
+                                </div>
+                              </div>
+                       
+                
+              
+            </div>
+            
+            `;
+              } else {
+                return `
+            <div class="user">
+                
+                   
+                            <div class="card card-border" style="width: 18rem;height:22rem; ">
+                                <div class="card-body">
+                                  <h5 class="card-title" style="text-transform:capitalize; color:black; font-weight:bold;">${user.name.formatted}</h5>
+                                  <div class="card-text" >
+                                    <p class="info"><b>User Name:</b> ${user.userName}</p>
+                                    <p class="info"><b>Full Name:</b> ${user.name.formatted}</p>
+                                    <p class="info"><b>User Id:</b> ${user.id}</p>
+                                    <p class="info"><b>Active:</b> ${user.active}</p>
+                                    <p class="info"><b>Email Id:</b> ${user.emails[0].value}</p>
+                                    <p class="info"><b>Phone No.:</b></p>
+                                    </div>
+                                </div>
+                              </div>
+                       
+              
+            </div>
+            
+            `;
+              }
+            }).join("");
+            document
+              .querySelector("#userinfo")
+              .insertAdjacentHTML("beforebegin", html);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+
+        function logout() {
+          let _body = `client_id=f60992ef-bc1b-453b-86e2-fffcecea6b19&client_secret=1eL8rsMZJf&token=${trial}`;
+
+          fetch(
+            `https://helpdesk.verify.ibm.com:443/v1.0/endpoint/default/revoke`,
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/x-www-form-urlencoded",
+                accept: "application/json",
+              },
+              body: _body,
+            }
+          )
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+
+
+        function search() {
+          var user_id = document.getElementById("searchedUserId").value;
+          fetch(`https://helpdesk.verify.ibm.com/v2.0/Users/${user_id}`, {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/scim+json",
+              accept: "application/scim+json",
+
+              //@user-payload.json
+            },
+          })
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+              if (!response.ok) {
+                //$("#searchId").append(`User id ${user_id} doesn't exist`);
+                //alert(`User Id ${user_id} does not exist`);
+                
+                (document.getElementById(
+                  "searchUserId"
+                ).innerHTML = `User id: ${user_id} doesn't exist.`),
+                  (document.getElementById(
+                    "searchName"
+                  ).innerHTML = ``),
+                  (document.getElementById(
+                    "searchEmail"
+                  ).innerHTML = ``),
+                  (document.getElementById(
+                    "searchMobile"
+                  ).innerHTML = ``),
+                  (document.getElementById(
+                    "searchCountry"
+                  ).innerHTML = ``),
+                  (document.getElementById(
+                    "searchStreetaddress"
+                  ).innerHTML = ``),
+                  (document.getElementById(
+                    "searchPostalcode"
+                  ).innerHTML = ``),
+                  (document.getElementById(
+                    "searchLocality"
+                  ).innerHTML = ``),
+                  (document.getElementById(
+                    "searchRegion"
+                  ).innerHTML = ``);
+
+                  
+              }
+              else{
+
+              
+              return response.json().then((data) => {
+                (document.getElementById(
+                  "searchUserId"
+                ).innerHTML = `User id: ${data.id}`),
+                  (document.getElementById(
+                    "searchName"
+                  ).innerHTML = `Name: ${data.name.formatted}`),
+                  (document.getElementById(
+                    "searchEmail"
+                  ).innerHTML = `Email: ${data.emails[0].value}`),
+                  (document.getElementById(
+                    "searchMobile"
+                  ).innerHTML = `Phone number: ${data.phoneNumbers[0].value}`),
+                  (document.getElementById(
+                    "searchCountry"
+                  ).innerHTML = `Country: ${data.addresses[0].country}`),
+                  (document.getElementById(
+                    "searchStreetaddress"
+                  ).innerHTML = `Street address: ${data.addresses[0].streetaddress}`),
+                  (document.getElementById(
+                    "searchPostalcode"
+                  ).innerHTML = `Postal code: ${data.addresses[0].postalCode}`),
+                  (document.getElementById(
+                    "searchLocality"
+                  ).innerHTML = `Locality: ${data.addresses[0].locality}`),
+                  (document.getElementById(
+                    "searchRegion"
+                  ).innerHTML = `Region: ${data.addresses[0].region}`);
+
+              })};
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+
+        
+        
+
+        function getDataOfUserToBeDeleted() {
+          var user_id = document.getElementById("deleteUserId").value;
+          fetch(`https://helpdesk.verify.ibm.com/v2.0/Users/${user_id}`, {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/scim+json",
+              accept: "application/scim+json",
+
+              //@user-payload.json
+            },
+          })
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+              if (!response.ok) {
+                $("#deleteId").append(`User id ${user_id} doesn't exist`);
+              }
+              return response.json().then((data) => {
+                (document.getElementById(
+                  "delId"
+                ).innerHTML = `User Id: ${data.id}`),
+                  (document.getElementById(
+                    "delUserName"
+                  ).innerHTML = `Username: ${data.userName}`),
+                  (document.getElementById(
+                    "delEmail"
+                  ).innerHTML = `Email: ${data.emails[0].value}`);
+
+                emailIdToBeDeleted = data.emails[0].value;
+                sendEmail();
+                //$("#idFound").append(`User id ${user_id} found.Please enter details below`);
+                //deleteUserId = document.getElementById("deleteUserId").value;
+                document
+                .querySelector("#deleteButtonAdj")
+                .insertAdjacentHTML(
+                "beforebegin",
+                `<button
+                    type="button"
+                    class="btn btn-create"
+                    type="button"
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                    data-dismiss="modal"
+                    id="delete">
+                    Delete User
+                  </button>`
+              );
+                
+              });
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function sendEmail() {
+          Email.send({
+            Host: "smtp.gmail.com",
+            Username: "helpdesk.sass@gmail.com",
+            Password: "Somya@123",
+            To: `${emailIdToBeDeleted}`,
+            From: "helpdesk.sass@gmail.com",
+            Subject: "Account delete alert",
+            Body:
+              "Your ISV account is going to be deleted! Please check with your Help Desk Executive if there is any mistake.",
+          }).then(function (message) {
+            swal("Mail Sent Successfully",{icon:"success"});
+          });
+        }
+
+        function deleteUser() {
+          var user_id = document.getElementById("deleteUserId").value;
+          fetch(`https://helpdesk.verify.ibm.com/v2.0/Users/${user_id}`, {
+            method: "DELETE",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/scim+json",
+              accept: "application/scim+json",
+
+              //@user-payload.json
+            },
+          })
+            .then((response) => {
+              // alert(response);
+              console.log(response);
+              if (!response.ok) {
+                $("#deletedOrNot").append(`User id ${user_id} doesn't exist`);
+              } else {
+                $("#deletedOrNot").append(`User id ${user_id} is deleted`);
+              }
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function createUser() {
+          var test_username = document.getElementById("test_username").value;
+          var test_firstname = document.getElementById("test_firstname").value;
+          var test_middlename = document.getElementById("test_middlename").value;
+          var test_surname = document.getElementById("test_surname").value;
+          var test_email = document.getElementById("test_email").value;
+          var test_phone = document.getElementById("test_phone").value;
+          test_phone = '91' + test_phone;
+          var test_locality = document.getElementById("test_locality").value;
+          var test_country = document.getElementById("test_country").value;
+          var test_streetaddress = document.getElementById("test_streetaddress").value;
+          var test_postalcode = document.getElementById("test_postalcode").value;
+          var test_region = document.getElementById("test_region").value; 
+          
+          if(document.getElementById('test_username').validity.valueMissing === true){
+            swal("Username is a required field", {icon:"warning"});
+            $("#test_username").focus();
+            return false;
+          }
+          if(document.getElementById('test_firstname').validity.valueMissing === true){
+            swal("First name is a required field", {icon:"warning"});
+            $("#test_firstname").focus();
+            return false;
+          }
+          // if(document.getElementById('test_middlename').validity.valueMissing === true){
+          //   alert("Middle name is a required field");
+          // }
+          if(document.getElementById('test_surname').validity.valueMissing === true){
+            swal("Surname is a required field", {icon:"warning"});
+            $("#test_surname").focus();
+            return false;
+          }
+          if(document.getElementById('test_email').validity.valueMissing === true){
+            swal("Email is a required field", {icon:"warning"});
+            $("#test_email").focus();
+            return false;
+          }
+          // if(document.getElementById('test_phone').validity.valueMissing === true){
+          //   alert("Phone is a required field");
+          // }
+          // if(document.getElementById('test_locality').validity.valueMissing === true){
+          //   alert("Locality is a required field");
+          // }
+          // if(document.getElementById('test_country').validity.valueMissing === true){
+          //   alert("Country is a required field");
+          // }
+          // if(document.getElementById('test_streetaddress').validity.valueMissing === true){
+          //   alert("Street Address is a required field");
+          // }
+          // if(document.getElementById('test_postalcode').validity.valueMissing === true){
+          //   alert("Postal code is a required field");
+          // }
+          // if(document.getElementById('test_region').validity.valueMissing === true){
+          //   alert("Region is a required field");
+          // }
+          
+
+          //var ids;
+          let _data = {
+            schemas: [
+              "urn:ietf:params:scim:schemas:core:2.0:User",
+              "urn:ietf:params:scim:schemas:extension:ibm:2.0:User",
+              "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+            ],
+            userName: `${test_username}`,
+            title: "End User",
+            name: {
+              familyName: `${test_surname}`,
+              givenName: `${test_firstname}`,
+              middleName: `${test_middlename}`,
+              formatted: `${test_firstname} ${test_middlename} ${test_surname}`,
+            },
+            displayName: `${test_firstname} ${test_surname}`,
+            preferredLanguage: "en-US",
+            active: true,
+            emails: [
+              {
+                value: `${test_email}`,
+                type: "work",
+              },
+            ],
+            addresses: [
+              {
+                locality: `${test_locality}`,
+                country: `${test_country}`,
+                type: "work",
+                streetAddress: `${test_streetaddress}`,
+                postalCode: `${test_postalcode}`,
+                primary: true,
+                region: `${test_region}`,
+              },
+            ],
+            phoneNumbers: [
+              {
+                value: `${test_phone}`,
+                type: "mobile",
+              },
+            ],
+            "urn:ietf:params:scim:schemas:extension:ibm:2.0:User": {
+              userCategory: "regular",
+              twoFactorAuthentication: false,
+            },
+            "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+              department: "Test Users",
+              employeeNumber: "012345",
+            },
+          };
+          fetch("https://helpdesk.verify.ibm.com/v2.0/Users", {
+            method: "POST",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/scim+json",
+            },
+            body: JSON.stringify(_data),
+          })
+            .then((response) => {
+              //  alert(response.status);
+              console.log(response);
+
+              if(response.ok){
+                (document.getElementById(
+                  "userCreated"
+                ).innerHTML = `User created successfully`)
+              }
+              else{
+                (document.getElementById(
+                  "userCreated"
+                ).innerHTML = `User not created.`)
+              }
+              //ids=response.split('/');
+              return response.json().then((data) => {});
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function getUserData() {
+          var user_id = document.getElementById("getUserDataId").value;
+          fetch(`https://helpdesk.verify.ibm.com/v2.0/Users/${user_id}`, {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/scim+json",
+              accept: "application/scim+json",
+
+              //@user-payload.json
+            },
+          })
+            .then((response) => {
+              //alert(response.status);
+              console.log(response);
+              if (response.ok) {
+
+                $("#idFound").append(`User id ${user_id} found.Please enter details below`);
+                updateUserId = document.getElementById("getUserDataId").value;
+                document
+                .querySelector("#callUpdate")
+                .insertAdjacentHTML(
+                "beforebegin",
+                `<button
+                        type="button"
+                        class="btn btn-info"
+                        data-toggle="modal"
+                        data-target="#myModalUpdateUserFinal"
+                        
+                      >
+                        Update User
+                      </button>`
+              );
+                
+              }
+              else{
+                $("#idFound").append(`User id ${user_id} not found.`);
+              }
+              
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+
+
+        function updateUser() {
+          //alert("Update")
+          updateUserId=document.getElementById("getUserDataId").value;
+          var update_username = document.getElementById("update_username").value;
+          var update_firstname = document.getElementById("update_firstname").value;
+          var update_middlename = document.getElementById("update_middlename").value;
+          var update_surname = document.getElementById("update_surname").value;
+          var update_email = document.getElementById("update_email").value;
+          var update_phone = document.getElementById("update_phone").value;
+          var update_locality = document.getElementById("update_locality").value;
+          var update_country = document.getElementById("update_country").value;
+          var update_streetaddress = document.getElementById("update_streetaddress").value;
+          var update_postalcode = document.getElementById("update_postalcode").value;
+          var update_region = document.getElementById("update_region").value;
+
+          if(document.getElementById('update_username').validity.valueMissing === true){
+            swal("Username is a required field");
+            $("#update_username").focus();
+            return false;
+          }
+          if(document.getElementById('update_firstname').validity.valueMissing === true){
+            swal("Firstname is a required field");
+            $("#update_firstname").focus();
+            return false;
+          }
+          // if(document.getElementById('update_middlename').validity.valueMissing === true){
+          //   alert("Middle name is a required field");
+          // }
+          if(document.getElementById('update_surname').validity.valueMissing === true){
+            swal("Surname is a required field");
+            $("#update_surname").focus();
+            return false;
+          }
+          if(document.getElementById('update_email').validity.valueMissing === true){
+            swal("Email is a required field");
+            $("#update_email").focus();
+            return false;
+          }
+          // if(document.getElementById('update_phone').validity.valueMissing === true){
+          //   update_phone="";
+          //  }else{
+          //   update_phone = '91' + update_phone;
+          //  }
+          // if(document.getElementById('update_locality').validity.valueMissing === true){
+          //   alert("Locality is a required field");
+          // }
+          // if(document.getElementById('update_country').validity.valueMissing === true){
+          //   alert("Country is a required field");
+          // }
+          // if(document.getElementById('update_streetaddress').validity.valueMissing === true){
+          //   alert("Street Address is a required field");
+          // }
+          // if(document.getElementById('update_postalcode').validity.valueMissing === true){
+          //   alert("Postal code is a required field");
+          // }
+          // if(document.getElementById('update_region').validity.valueMissing === true){
+          //   alert("Region is a required field");
+          // }
+          
+
+          //var ids;
+          let _data = {
+            schemas: [
+              "urn:ietf:params:scim:schemas:core:2.0:User",
+              "urn:ietf:params:scim:schemas:extension:ibm:2.0:User",
+              "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User",
+            ],
+            userName: `${update_username}`,
+            title: "End User",
+            name: {
+              familyName: `${update_surname}`,
+              givenName: `${update_firstname}`,
+              middleName: `${update_middlename}`,
+              formatted: `${update_firstname} ${update_middlename} ${update_surname}`,
+            },
+            displayName: `${update_firstname} ${update_surname}`,
+            preferredLanguage: "en-US",
+            active: true,
+            emails: [
+              {
+                value: `${update_email}`,
+                type: "work",
+              },
+            ],
+            addresses: [
+              {
+                locality: `${update_locality}`,
+                country: `${update_country}`,
+                type: "work",
+                streetAddress: `${update_streetaddress}`,
+                postalCode: `${update_postalcode}`,
+                primary: true,
+                region: `${update_region}`,
+              },
+            ],
+            phoneNumbers: [
+              {
+                value: `${update_phone}`,
+                type: "mobile",
+              },
+            ],
+            "urn:ietf:params:scim:schemas:extension:ibm:2.0:User": {
+              userCategory: "regular",
+              twoFactorAuthentication: false,
+            },
+            "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User": {
+              department: "Test Users",
+              employeeNumber: "012345",
+            },
+          };
+          fetch(`https://helpdesk.verify.ibm.com/v2.0/Users/${updateUserId}`, {
+            method: "PUT",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/scim+json",
+            },
+            body: JSON.stringify(_data),
+          })
+            .then((response) => {
+              // alert(response.status);
+              console.log(response);
+              if(response.status==200){
+                (document.getElementById(
+                  "userUpdated"
+                ).innerHTML = `User updated successfully`);
+                
+
+
+              }
+              else{
+                (document.getElementById(
+                  "userUpdated"
+                ).innerHTML = `User not updated.`)
+              }
+              //ids=response.split('/');
+              return response.json().then((data) => {
+
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        
+
+      </script>
+    </div>
+    <footer class="foot"></footer>
+  </body>
+</html>

@@ -1,0 +1,339 @@
+@-ms-viewport{
+    width: device-width;
+    
+}
+
+@keyframes fadeIn {
+    0% {opacity:0.5;}
+    100% {opacity:1;}
+}
+@keyframes fadeIn-bg {
+    from{background-color:#a29ba833 ;}
+    to{background-color: #a29ba800;}
+}
+
+b{
+    animation: fadeIn linear 3s;
+} 
+h1#helpdesk {
+    animation: fadeIn-bg linear 3s 1;
+}
+.nav>button:hover{
+    border-left-color: #1587ad;
+    border-left-width:5px;
+}
+
+
+.nav>button>a:hover{
+    color:white ;
+   }
+
+.ibm_logo{
+    width: 5rem;
+    padding: 5px 5px;
+    height: auto;
+}
+
+.totalusers{
+    /* margin-top:1rem;  */
+    font-weight:800;
+}
+
+.breadcrumb-item{
+    text-transform: none;
+}
+
+.btndrop{
+    color: black;
+    background-color: lightgray;
+    border-bottom-color: black ;
+}
+
+.btnlook{
+    color: black;
+    background-color: lightgray;
+}
+ .bg{
+    /* background-image: url('assets/HelpBg1.png');
+    max-width: 100%;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position:center ;
+    background-size: cover; 
+    background-position-x: 52%; 
+    font-family: 'IBM Plex Sans', sans-serif; */
+    background: url('assets/HelpBg1.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} 
+
+a.nav-link {
+    color: azure;
+    font-style: oblique;
+}
+.cs-content{
+    
+        position: absolute;
+        right: 0;
+        top: 0;
+        left: 50%;
+        bottom: 0;
+        box-shadow: none;
+        border-radius: 0;
+        max-width: 100%;
+        padding: 100px;
+        overflow-y: scroll;
+    
+}
+.fixed-header{
+width: 100%;
+position: fixed;
+z-index: 100;
+
+}
+
+.form-rounded{
+    border-radius: 1rem;
+    border-color:blanchedalmond;
+    border-width: 2px;
+    background-color: rgb(0, 0, 0);
+    color: blanchedalmond;
+    
+}
+.block{
+   /*background-image: url('assets/hex.jpg');*/
+   
+    background-color: rgb(0, 0, 0);
+    background-image: url('assets/HelpBg.png'); 
+    position: relative;
+    
+        
+  }
+
+ .foot{
+    /* background-image: url('assets/aurora_full_width.png') ; */
+   height: 300px;
+   background-color: transparent;
+    vertical-align: initial;
+    position: relative;
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: cover;
+ }
+
+
+ .navbar > button{
+     border-bottom: 12px;
+     align-items: center;
+     top: 5px;
+ }
+  
+
+ .pull-right{
+     position: absolute;
+     top:-5px;
+     right:16px;
+ }
+ 
+ .pull-left{
+    position: absolute;
+    top: 8px;
+    left:60px;
+    
+}
+ 
+ 
+ .ibm-home {
+    color:blanchedalmond;
+    font-size: 60px;
+    line-height: 65px;
+    text-indent: 0;
+    top: 10px;
+}
+
+.grid-container {
+    display: grid;
+    
+    grid-column-gap: 50px;
+  }
+ 
+  .nav{
+      
+      height:100%;
+      width: 0;
+      position: fixed;
+      z-index:1;
+      top:50px;
+      left:0;
+      background-color:#111;
+      opacity: 0.95;
+      overflow-x:hidden;
+      padding-top:60px;
+      transition: .7s;
+      
+      
+
+  }
+
+  .nav a {
+      display: block;
+      padding: 20px 30px;
+      font-size: medium;
+      text-decoration: none;
+      color:blanchedalmond;
+      font-weight: 800;
+      
+      
+  }
+
+  .navbar{
+      /* padding: 1rem 1rem; */
+      background-color:#323232 ;
+  }
+
+  table,tr,td{
+      border: 1px solid white;
+  }
+
+  .btn-info{
+      background-color:#2E86C1;
+  }
+
+  
+
+  .fa {
+    padding: 5px 5px;
+    width: 30px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    margin: 5px 2px;
+    cursor: pointer;
+  }
+  
+ .header_bar{
+     display: flex;
+ }
+
+ .card-border{
+     margin: 20px 20px;
+     border-style: solid;
+     border-color: #02182b ;
+     border-width: 5px;
+     
+ }
+ 
+
+.nav>button{
+    background-color: #111;
+ }
+
+ .nav>button>a{
+    color: rgb(255, 255, 255);
+    font-size:larger;
+    font-weight: 600; 
+    text-decoration:none;
+    text-decoration-style: none;
+    text-align: left;
+ }
+/* MODAL */
+ .modal-body{
+     color: white;
+ }
+ .modal-title-body{
+    font-size: larger;
+    color: black;
+    text-align: center;
+    text-transform: capitalize;
+    font-weight: 800;
+    padding-bottom: 10px;
+ }
+
+ .modal-inputs{
+    color: black;
+    text-transform: capitalize;
+ }
+ input{
+    border:none;
+    border-bottom: 1px solid #1890ff;
+    padding: 5px 10px;
+    outline: none;
+    background-color: lightgray;
+ }
+ .modal-container{
+     color: #f2f4f8;
+ }
+
+
+ .modal-header{
+    background-color:lightgray;
+    color:black;
+}
+.modal-footer{
+    background-color: #f2f4f8;
+    border-top-color: #323232;
+}
+
+.modal-text{
+    color: black;
+}
+
+.searchInput{
+    border:none;
+    border-bottom: 1px solid #1890ff;
+    padding: 5px 10px;
+    outline: none;
+    background-color: lightgray;
+}
+
+.btn-create{
+    color: white;
+    background-color: #1587ad;
+    background-image: none;
+    border-color: #1587ad;
+}
+.btn-close{
+    color: white;
+    background-color: #323232;
+    background-image: none;
+    border-color: black;
+}
+/*----------MODAL-------*/
+ nav.navbar.navbar-expand-lg {
+    background-color: #f2f4f8;
+}
+
+
+   /*FAQ*/
+
+.faq>button{
+    width: 100%;
+    background-color:#1587ad;
+    color: blanchedalmond;
+    text-align: left;
+    
+  }
+
+
+
+  .faq-a>button{
+      width: 100%;
+
+text-align: left;    }
+ 
+label{
+    color: black;
+}
+
+p{
+    color: black;
+} 
+
+   
+ /* Sweetalert modal */
+ .required-modal{
+     border: 5px solid rgb(0, 153, 255);
+     color: red;
+ }

@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script>
+      function openSlideMenu(){
+        var menu = document.getElementById('menu');
+        var content = document.getElementById('content');
+        
+        if(menu.style.width=='300px' && content.style.width== '300px'){
+          menu.style.width='0';
+          content.style.width='0';
+
+        }else{
+          menu.style.width='300px';
+          content.style.width='300px';
+
+        }
+        
+      }
+      
+    
+    </script>
+    <script src="bootstrap-switch.js"></script>
+    <head>
+        <meta charset="UTF-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+        <title>FAQs</title>
+        <meta content="width=device-width,initial-scale=1" name="viewport">
+        <link rel="canonical" href="http://www.ibm.com/">
+        <link rel="SHORTCUT ICON" href="//www.ibm.com/favicon.ico"/>
+        <meta name="robots" content="index,follow">
+        <meta name="description" content="IBM id Sign-in Template refresh">
+        <meta name="keywords" content="Sign-in Page IBM id">
+        <meta name="geo.country" content="US">
+        <meta name="dcterms.date" content="2014-07-23">
+        <meta name="dcterms.rights" content="&copy; Copyright IBM Corp. 2018">
+        <link rel="manifest" href="https://www.ibm.com/account/ibmidutil/js/idaas/duo/manifest.json">
+        <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
+        <script>window.App=window.App||{},window.App.locale=document.documentElement.lang,"en-US"===window.App.locale&&(window.App.locale="en")</script>
+        <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet"/>
+        <link href="//1.www.s81c.com/common/v18/css/grid-fluid.css" rel="stylesheet"/>
+        <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet"/>
+        <script type="application/javascript" src="https://www.ibm.com/account/ibmidutil/js/idaas/duo/locales/en.js"></script><script type="application/javascript" src="https://www.ibm.com/account/ibmidutil/js/idaas/duo/assets/prod.client_ids.js"></script>
+        <link href="https://www.ibm.com/account/ibmidutil/js/idaas/duo/static/css/main.css" rel="stylesheet">
+        <script src="https://use.fontawesome.com/003fb05841.js"></script>
+        <script type = "text/javascript" >
+          function preventBack(){window.history.forward();}
+           setTimeout("preventBack()", 0);
+           window.onunload=function(){null};
+       </script>
+      </head>
+    <body class="bg" style="background-color:#f2f4f8;color: rgb(26, 23, 19);" scroll=no>
+      <header style="background-color:#323232; height: 50px;" class="fixed-header" >
+        <div class="header_bar" >
+          
+            
+            <span class="slide" id="navigationToggler" >
+              <a onClick="openSlideMenu()" id="togg">
+                <i class="fa fa-bars fa-2x" ></i>
+                <script>
+                  $("#togg").click(function(event){
+                    $(this).find('i').toggleClass('fa fa-times fa-2x');
+                    $(this).find('i').toggleClass('fa fa-bars fa-2x');
+                  });
+                </script>
+              </a>
+            </span>
+            
+        
+        
+          <div class="pull-left">
+            <a href="Home.html"><img class="ibm_logo" src="assets/IBM_logo.png" width="60px"/></a>
+          </div>
+
+          
+          
+      
+          <Navbar dark expand="xxl" class="pull-right" id="logout" >
+            <nav class="navbar navbar-expand-xxl ">
+                                
+                
+                <button class=" fa fa-user fa-lg navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar2" style="outline-width:0;">
+                
+                </button>
+              
+                
+                <div class="collapse navbar-collapse " id="collapsibleNavbar2">
+                  <ul class="navbar-nav" style="list-style-type:none;">
+                    <p></p>
+                   <div> <strong><li class="nav-item" id="name"></li></strong></div>
+                  <div><li class="nav-item"><a class="nav-link" href="Profile.html">Profile</a></li></div>
+                   <div> <li class="nav-item"><a class="nav-link" onclick="logout()" href="Redirection.html">Log out</a></li></div>
+                  </ul>
+                </div>
+              </nav>
+        
+           </Navbar>
+          
+        </div>
+        
+       </header>
+       
+       <div >
+        <img class="background-glow" src="./public/assets/aurora_full_width.png" alt="">
+        
+        <div class="container" style="padding-top: 1px;padding-bottom: 200px;">
+            
+            <div>
+              <p ></p>
+            </div>
+            <div><h1 id="FAQs" style="font-size:x-large; text-align: center;margin-top:30px;">FAQs</h1></div>
+             
+            <nav class="breadcrumb" style="background-color:lightgray;">
+              <a class="breadcrumb-item"  href="Home.html">Home</a>
+              <a class="breadcrumb-item active">FAQs</a>
+            </nav>
+
+            <div id="content">
+              <div id="menu" class="nav" style="overflow-y: hidden;display: flex;flex-direction: column;">    
+                <button class="btn btn-block" ><a href="Home.html">Home</a></button>             
+                <button class="btn btn-block" ><a href="Users.html">Manage Users</a></button>
+                <button class="btn btn-block" ><a href="ManageAuthenticationFactors.html">Manage Authentication</a></button>
+                <button class="btn btn-block" ><a href="FAQs.html">FAQs</a></button>
+                <button class="btn btn-block" ><a href="AboutUs.html">About Us</a></button>
+                
+                
+              </div>
+              
+              
+            </div>
+
+             
+                <p style="margin-top:30px;" id="user"></p>
+
+                <Navbar >
+                  <nav class="navbar navbar-expand-lg" style="background-color: transparent">
+                    <!-- Links -->
+                    <div class="navbar-nav" style="list-style-type: none;display: flex;flex-direction: column;width: 100%;">
+                      <li class="nav-item nav-link" style="list-style-type: none">
+                        <div class="dropdown faq" style="list-style-type: none">
+                          <button
+                            class="btn btn-primary btndrop dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                          
+                          What to do incase you forget your password?
+                          </button>
+        
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton"
+                            style="background-color: #f2f4f8;
+                            border: none;
+                            position: relative;"
+                          >
+                            <div class="faq-a">
+                              <button
+                              style="cursor: context-menu;"
+                                type="button"
+                                class="btn btnlook"
+          
+                              >
+                              You can go to email/sms otp and login using otp and then change you password to a temporary password.
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="nav-item nav-link" style="list-style-type: none">
+                        <div class="dropdown faq" style="list-style-type: none">
+                          <button
+                            class="btn btn-primary btndrop dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                          What to do if I no longer require ISV?
+                          </button>
+        
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton"
+                            style="background-color: #f2f4f8;
+                            border: none;
+                            position: relative;"
+                          >
+                            <div class="faq-a">
+                              <button
+                              style="cursor: context-menu;"
+                                type="button"
+                                class="btn btnlook"
+                              >
+                              You can go to delete users and delete your entire details from the ISV cloud.                      </button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li class="nav-item nav-link" style="list-style-type: none">
+                        <div class="dropdown faq" style="list-style-type: none">
+                          <button
+                            class="btn btn-primary btndrop dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                          How to check whether a user is valid or not?
+                          </button>
+        
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton"
+                            style="background-color: #f2f4f8;
+                            border: none;
+                            position: relative;"
+                          >
+                            <div class="faq-a">
+                              <button
+                              style="cursor: context-menu;"
+                                type="button"
+                                class="btn btnlook"
+                              >
+                              You can ask the user for their details and then under display users, you can check whether the user exists or not.
+                                   </button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      
+                      <li class="nav-item nav-link" style="list-style-type: none">
+                        <div class="dropdown faq" style="list-style-type: none">
+                          <button
+                            class="btn btn-primary btndrop dropdown-toggle"
+                            type="button"
+                            id="dropdownMenuButton"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                          Issue not listed here?
+                          </button>
+        
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuButton"
+                            style="background-color: #f2f4f8;
+                            border: none;
+                            position: relative;"
+                          >
+                            <div class="faq-a">
+                              <button
+                                style="cursor: context-menu;"
+                                type="button"
+                                class="btn btnlook"
+                              >
+                              Mail us at <p style="color: #323232;">helpdesk.sass@gmail.com</p>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      
+
+                    </div>
+                    </nav>
+                </Navbar>
+                
+            
+            
+            
+          </div>
+          
+            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            
+        </div>
+       
+      </div>
+        <footer class='foot'>
+
+        </footer>
+    </body>
+    
+</html>
+<script type="text/javascript">
+              var trial = sessionStorage.getItem("trial");
+              // var token = a_token;
+        function logout() {
+          let _body = `client_id=f60992ef-bc1b-453b-86e2-fffcecea6b19&client_secret=1eL8rsMZJf&token=${trial}`;
+
+          fetch(
+            `https://helpdesk.verify.ibm.com:443/v1.0/endpoint/default/revoke`,
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/x-www-form-urlencoded",
+                accept: "application/json",
+              },
+              body: _body,
+            }
+          )
+            .then((response) => {
+              alert(response.status);
+              console.log(response);
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+/*
+  var taskList = []; //build array
+  
+function loadTasks() {
+  if (!localStorage.taskList) {
+    return false;
+  }
+  var newTaskList = JSON.parse(localStorage.taskList); //retrieve array with parse
+
+  for (i = 0; i < newTaskList.length; i++) {
+    // display objects in divs
+
+    var noteNode = document.createElement("div");
+    var buttonNode = document.createElement("button");
+    var descNode = document.createTextNode(newTaskList[i]);
+
+    buttonNode.className = "btn btn-outline-info btn-block btn-xs";
+    
+    buttonNode.appendChild(descNode);
+    noteNode.appendChild(buttonNode);
+
+    document.getElementById("newFaq").appendChild(noteNode); //display divs
+
+    if (newFaq.childElementCount > newTaskList.length) {
+      //remove excess divs
+      for (n = 0; newFaq.childElementCount - 2; n++) {
+        newFaq.removeChild(newFaq.firstChild);
+      }
+    }
+  }
+}
+
+function submitFunc() {
+  var task = document.getElementById("newQuestion").value;
+
+  taskList[taskList.length] = task; //put objects inside array
+  localStorage.taskList = JSON.stringify(taskList); //store array with stringify
+  loadTasks();
+  return false; //prevent submit
+}
+
+loadTasks();
+
+*/
+</script>

@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css"
+  />
+  <link
+    href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="sweetalert2.min.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+  <script>
+    function openSlideMenu() {
+      var menu = document.getElementById("menu");
+      var content = document.getElementById("content");
+
+      if (menu.style.width == "300px" && content.style.width == "300px") {
+        menu.style.width = "0";
+        content.style.width = "0";
+      } else {
+        menu.style.width = "300px";
+        content.style.width = "300px";
+      }
+    }
+  </script>
+  <!-- <scrip src="bootstrap-switch.js"></scrip> -->
+  <style>
+    .user {
+      margin-bottom: 1rem;
+      background-color: #f2f4f8;
+    }
+
+    .info {
+      padding-bottom: 2px;
+      color: black;
+    }
+  </style>
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0 user-scalable=no"
+    />
+    <title>Help Desk</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <link rel="canonical" href="http://www.ibm.com/" />
+    <link rel="SHORTCUT ICON" href="//www.ibm.com/favicon.ico" />
+    <meta name="robots" content="index,follow" />
+    <meta name="description" content="IBM id Sign-in Template refresh" />
+    <meta name="keywords" content="Sign-in Page IBM id" />
+    <meta name="geo.country" content="US" />
+    <meta name="dcterms.date" content="2014-07-23" />
+    <meta name="dcterms.rights" content="&copy; Copyright IBM Corp. 2018" />
+    <!-- <link rel="manifest" href="https://www.ibm.com/account/ibmidutil/js/idaas/duo/manifest.json"> -->
+    <script>
+      (window.App = window.App || {}),
+        (window.App.locale = document.documentElement.lang),
+        "en-US" === window.App.locale && (window.App.locale = "en");
+    </script>
+    <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+    <link
+      href="//1.www.s81c.com/common/v18/css/grid-fluid.css"
+      rel="stylesheet"
+    />
+    <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
+    <script
+      type="application/javascript"
+      src="https://www.ibm.com/account/ibmidutil/js/idaas/duo/locales/en.js"
+    ></script>
+    <script
+      type="application/javascript"
+      src="https://www.ibm.com/account/ibmidutil/js/idaas/duo/assets/prod.client_ids.js"
+    ></script>
+    <link
+      href="https://www.ibm.com/account/ibmidutil/js/idaas/duo/static/css/main.css"
+      rel="stylesheet"
+    />
+    <script src="https://use.fontawesome.com/003fb05841.js"></script>
+    <script type="text/javascript">
+      function preventBack() {
+        window.history.forward();
+      }
+      setTimeout("preventBack()", 0);
+      window.onunload = function () {
+        null;
+      };
+    </script>
+  </head>
+
+  <body
+    class="bg"
+    style="
+      background-image: none;
+      background-color: #f2f4f8;
+      color: rgb(26, 23, 19);
+      overflow-x: hidden;
+      font-family: 'IBM Plex Sans', sans-serif;
+    "
+    scroll="no"
+  >
+    <header
+      style="background-color: #323232; height: 50px"
+      class="fixed-header"
+    >
+      <div class="header_bar">
+        <span class="slide" id="navigationToggler">
+          <a href="#" onClick="openSlideMenu()" id="togg">
+            <i class="fa fa-bars fa-2x"></i>
+            <script>
+              $("#togg").click(function (event) {
+                $(this).find("i").toggleClass("fa fa-times fa-2x");
+                $(this).find("i").toggleClass("fa fa-bars fa-2x");
+              });
+            </script>
+          </a>
+        </span>
+
+        <div class="pull-left">
+          <a href="Home.html"
+            ><img class="ibm_logo" src="assets/IBM_logo.png" width="60px"
+          /></a>
+        </div>
+
+        <Navbar dark expand="xxl" class="pull-right" id="logout">
+          <nav class="navbar navbar-expand-xxl">
+            <button
+              class="fa fa-user fa-lg navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#collapsibleNavbar2"
+              style="outline-width: 0"
+            ></button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavbar2">
+              <ul class="navbar-nav" style="list-style-type: none">
+                <p></p>
+                <div>
+                  <strong><li class="nav-item" id="name"></li></strong>
+                </div>
+                <div>
+                  <li class="nav-item">
+                    <a class="nav-link" href="Profile.html">Profile</a>
+                  </li>
+                </div>
+                <div>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      onclick="logout()"
+                      href="Redirection.html"
+                      >Log out</a
+                    >
+                  </li>
+                </div>
+              </ul>
+            </div>
+          </nav>
+        </Navbar>
+      </div>
+    </header>
+    <div>
+      <div class="container" style="padding-top: 1px; padding-bottom: 200px">
+        <div>
+          <h1
+            id="Users"
+            style="font-size: x-large; text-align: center; margin-top: 90px"
+          >
+            Manage Authentication Factors
+          </h1>
+        </div>
+
+        <nav class="breadcrumb" style="background-color: lightgray">
+          <a class="breadcrumb-item" href="Home.html">Home</a>
+          <a class="breadcrumb-item active">Manage Authentication</a>
+        </nav>
+
+        <Navbar>
+          <nav class="navbar navbar-expand-lg navbar-dark">
+            <!-- Links -->
+            <div class="navbar-nav" style="list-style-type: none">
+              <li class="nav-item nav-link" style="list-style-type: none">
+                <div class="dropdown" style="list-style-type: none">
+                  <button
+                    class="btn btndrop dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Email Authentication
+                  </button>
+
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                    style="
+                      background-color: #f2f4f8;
+                      border: none;
+                      position: relative;
+                    "
+                  >
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block btn-xs"
+                        data-toggle="modal"
+                        data-target="#myModalEmailOTPEnrollment"
+                      >
+                        Create Enrollment
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalResendEmailOtp"
+                      >
+                        Resend OTP
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalEmailOtpEnrollments"
+                      >
+                        Get Enrollments
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalEmailOtpEnrollmentForId"
+                      >
+                        Get Enrollment by Id
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalDeleteEmailOtpEnrollment"
+                      >
+                        Delete Enrollment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item nav-link">
+                <div class="dropdown">
+                  <button
+                    class="btn btndrop dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    SMS Authentication
+                  </button>
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                    style="
+                      background-color: #f2f4f8;
+                      border: none;
+                      position: relative;
+                    "
+                  >
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block btn-xs"
+                        data-toggle="modal"
+                        data-target="#myModalSMSOTPEnrollment"
+                      >
+                        Create Enrollment
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalResendSMSOtp"
+                      >
+                        Resend OTP
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalSMSOtpEnrollments"
+                      >
+                        Get Enrollments
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalSMSOtpEnrollmentForId"
+                      >
+                        Get Enrollment by Id
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalDeleteSMSOtpEnrollment"
+                      >
+                        Delete Enrollment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item nav-link" style="list-style-type: none">
+                <div class="dropdown" style="list-style-type: none">
+                  <button
+                    class="btn btndrop dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Voice Authentication
+                  </button>
+
+                  <div
+                    class="dropdown-menu"
+                    aria-labelledby="dropdownMenuButton"
+                    style="
+                      background-color: #f2f4f8;
+                      border: none;
+                      position: relative;
+                    "
+                  >
+                    <div>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block btn-xs"
+                        data-toggle="modal"
+                        data-target="#myModalVoiceOTPEnrollment"
+                      >
+                        Create Enrollment
+                      </button>
+                      
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalResendVoiceOtp"
+                      >
+                        Resend OTP
+                      </button>
+                      
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalVoiceOtpEnrollments"
+                      >
+                        Get Enrollments
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalVoiceOtpEnrollmentForId"
+                      >
+                        Get Enrollment by Id
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btnlook btn-block"
+                        data-toggle="modal"
+                        data-target="#myModalDeleteVoiceOtpEnrollment"
+                      >
+                        Delete Enrollment
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </div>
+          </nav>
+        </Navbar>
+
+        <div id="content">
+          <div
+            id="menu"
+            class="nav"
+            style="overflow-y: hidden; display: flex; flex-direction: column"
+          >
+            <button class="btn btn-block"><a href="Home.html">Home</a></button>
+            <button class="btn btn-block">
+              <a href="Users.html">Manage Users</a>
+            </button>
+            <button class="btn btn-block">
+              <a href="ManageAuthenticationFactors.html"
+                >Manage Authentication</a
+              >
+            </button>
+            <button class="btn btn-block"><a href="FAQs.html">FAQs</a></button>
+            <button class="btn btn-block">
+              <a href="AboutUs.html">About Us</a>
+            </button>
+          </div>
+        </div>
+        <!-- Sure Delete User Modal-->
+
+        <div>
+          <!--Email OTP Enrollment Modal -->
+          <div id="myModalEmailOTPEnrollment" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 300px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-container">
+                    <p class="modal-title-body" style="font-size: larger">
+                      Create Enrollment
+                    </p>
+                    <label class="modal-inputs" for="enterUserId"
+                      >Enter User Id </label
+                    ><br />
+                    <input
+                      type="text"
+                      id="enterUserId"
+                      placeholder="User Id"
+                      required value=""
+                    /><br />
+
+                    <label class="modal-inputs" for="enterEmail"
+                      >Enter Email Id
+                    </label>
+                    <input
+                      type="email"
+                      id="enterEmail"
+                      placeholder="User Email"
+                      required value=""
+                    /><br /><br />
+
+                    <button
+                      type="button"
+                      class="btn btn-create"
+                      onClick="createEmailOtpEnrollment()"
+                    >
+                      Submit</button
+                    ><br /><br />
+
+                    <label class="modal-inputs" for="enterOtpValue"
+                      >Enter OTP Value</label
+                    >
+                    <input
+                      type="text"
+                      id="enterOtpValue"
+                      placeholder="Otp Value"
+                      required value=""
+                    /><br /><br />
+
+                    <p
+                      class="modal-inputs"
+                      id="messageDescription"
+                      style="color: black"
+                    ></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    style="background-color: green; border-color: green"
+                    onClick="validateEmailOtpEnrollment()"
+                  >
+                    Validate
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Resend Email Otp Modal -->
+          <div id="myModalResendEmailOtp" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 300px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body" style="display: flex">
+                  <div class="modal-container">
+                    <p class="modal-title-body" style="font-size: larger">
+                      Resend OTP
+                    </p>
+                    <label class="modal-inputs" for="enterEmailOtpPrefix"
+                      >Enter OTP Prefix (First 4 Digits)
+                    </label>
+                    <input
+                      type="text"
+                      id="enterEmailOtpPrefix"
+                      placeholder="Otp Prefix"
+                      required value=""
+                    /><br /><br />
+                    <!-- <label for="enterEmailOtpIdResend">Enter Otp Id: </label>
+                                        <input type="text" id="enterEmailOtpIdResend"><br><br>-->
+                    <p
+                      id="messageDescriptionResendEmailOtp"
+                      style="color: black"
+                    ></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="requestNewEmailOtp()"
+                  >
+                    Request OTP
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Email Otp Enrollments Modal -->
+          <div id="myModalEmailOtpEnrollments" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 500px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body" style="background-color: lightgray">
+                  <div class="modal-container">
+                    <p id="totalEmail" style="color: black; text-align: center">Email Otp Enrollments</p>
+                    <p id="email"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="getEmailOtpEnrollments()"
+                    id="getEmailOtpEnrollmentsButton"
+                  >
+                    Get Enrollments
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Email Otp Enrollment For id Modal -->
+          <div id="myModalEmailOtpEnrollmentForId" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 500px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body" style="background-color: lightgray">
+                  <div class="modal-container">
+                    <p style="color: black; text-align: center">
+                      Email OTP Enrollment for Id
+                    </p>
+
+                    <label for="emailEnForId">User Id</label>
+                    <input id="emailEnForId" placeholder="User Id" required value="" />
+                    <div id="emailEn"></div>
+                    
+                    
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="getEmailOtpEnrollmentForId()"
+                    id="getEmailOtpEnrollmentForIdButton"
+                  >
+                    Get Enrollments
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Delete an Email Enrollment-->
+          <div
+            id="myModalDeleteEmailOtpEnrollment"
+            class="modal fade"
+            role="dialog"
+          >
+            <div class="modal-dialog" style="width: 500px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-container">
+                    <p id="email" style="color: black; text-align: center">
+                      Delete Email OTP Enrollment
+                    </p>
+                    <label for="enterEmailOtpIdDeleted">Enrollment Id</label>
+                    <input
+                      id="enterEmailOtpIdDeleted"
+
+                      placeholder="OTP Id"
+                      required value=""
+                    /><br />
+
+                    <p style="color: black" id="emailEnrollmentDeleted"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="deleteEmailOtpEnrollment()"
+                  >
+                    Delete Enrollment
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--SMS OTP Enrollment Modal -->
+          <div id="myModalSMSOTPEnrollment" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 300px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-container">
+                    <p class="modal-title-body" style="font-size: larger">
+                      Create Enrollment
+                    </p>
+                    <label class="modal-inputs" for="enterSMSUserId"
+                      >Enter User Id</label
+                    >
+                    <input
+                      type="text"
+                      id="enterSMSUserId"
+                      placeholder="User Id"
+                      required value=""
+                    /><br />
+
+                    <label class="modal-inputs" for="enterMobile"
+                      >Enter Mobile No.</label
+                    >
+                    <input
+                      type="text"
+                      id="enterMobile"
+                      placeholder="User Mobile Number"
+                      required value=""
+                    /><br /><br />
+
+                    <button
+                      type="button"
+                      class="btn btn-create"
+                      onClick="createSMSOtpEnrollment()"
+                    >
+                      Submit</button
+                    ><br /><br />
+
+                    <!--  <p id="lastValidationSMS" style="color: white;">Last Validation: </p>-->
+                    <!--
+                                        <label for="enterSMSOtpId">OTP ID:</label>
+                                        <input type="text" id="enterSMSOtpId"><br>
+
+                                        <label for="enterSMSValidatorId">Validator ID: </label>
+                                        <input type="text" id="enterSMSValidatorId"><br>-->
+
+                    <label class="modal-inputs" for="enterSMSOtpValue"
+                      >Enter OTP Value
+                    </label>
+                    <input
+                      type="text"
+                      id="enterSMSOtpValue"
+
+                      placeholder="OTP Value"
+                      required value=""
+                    /><br /><br />
+
+                    <p id="messageDescriptionSMS" style="color: black"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    style="background-color: green; border-color: green"
+                    onClick="validateSMSOtpEnrollment()"
+                  >
+                    Validate
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Resend SMS Otp Modal -->
+          <div id="myModalResendSMSOtp" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 300px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-container">
+                    <p class="modal-title-body" style="font-size: larger">
+                      Resend OTP
+                    </p>
+                    <label class="modal-inputs" for="enterSMSOtpPrefix"
+                      >Enter OTP Prefix(First 4 digits)
+                    </label>
+                    <input
+                      type="text"
+                      id="enterSMSOtpPrefix"
+
+                      placeholder="OTP Prefix"
+                      required value=""
+                    /><br /><br />
+                    <!-- <label for="enterSMSOtpIdResend">Enter Otp Id: </label>
+                                        <input type="text" id="enterSMSOtpIdResend"><br><br>-->
+                    <p style="color:black" id="messageDescriptionResendSMSOtp"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="requestNewSMSOtp()"
+                  >
+                    Request OTP
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--SMS Otp Enrollments Modal -->
+          <div id="myModalSMSOtpEnrollments" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 500px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body" style="background-color: lightgray">
+                  <div class="modal-container">
+                    <p id="totalSms" style="color: black; text-align: center">
+                      SMS OTP Enrollments
+                    </p>
+                    <p id="sms"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="getSMSOtpEnrollments()"
+                    id="getSMSOtpEnrollmentsButton"
+                  >
+                    Get Enrollments
+                  </button>
+
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--SMS Otp Enrollment For id Modal -->
+          <div id="myModalSMSOtpEnrollmentForId" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 500px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body" style="background-color: lightgray">
+                  <div class="modal-container">
+                    <p style="color: black; text-align: center">
+                      SMS OTP Enrollment for Id
+                    </p>
+
+                    <label for="smsEnForId">User Id</label>
+                    <input id="smsEnForId" placeholder="User Id" required value="" />
+                    <div id="smsEn"></div>
+                    
+                    
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="getSMSOtpEnrollmentForId()"
+                  >
+                    Get Enrollments
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Delete an SMS Enrollment-->
+          <div
+            id="myModalDeleteSMSOtpEnrollment"
+            class="modal fade"
+            role="dialog"
+          >
+            <div class="modal-dialog" style="width: 500px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-container">
+                    <p id="sms" style="color: black; text-align: center">
+                      Delete SMS OTP Enrollment
+                    </p>
+                    <label for="enterSmsOtpIdDeleted">Enrollment Id</label>
+                    <input
+                      id="enterSmsOtpIdDeleted"
+
+                      placeholder="Enrollment Id"
+                      required value=""
+                    /><br />
+
+                    <p style="color: black" id="smsEnrollmentDeleted"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="deleteSMSOtpEnrollment()"
+                  >
+                    Delete Enrollment
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Voice OTP Enrollment Modal -->
+          <div id="myModalVoiceOTPEnrollment" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 300px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-container">
+                    <p class="modal-title-body" style="font-size: larger">
+                      Create Enrollment
+                    </p>
+                    <label class="modal-inputs" for="enterVoiceUserId"
+                      >Enter User Id</label
+                    >
+                    <input
+                      type="text"
+                      id="enterVoiceUserId"
+                      placeholder="User Id"
+                      required value=""
+                    /><br />
+
+                    <label class="modal-inputs" for="enterVoiceMobile"
+                      >Enter Mobile No.</label
+                    >
+                   
+                    <input
+                      type="text"
+                      id="enterVoiceMobile"
+                      placeholder="User Mobile Number"
+                      required value=""
+                    /><br /><br />
+
+                    <button
+                      type="button"
+                      class="btn btn-create"
+                      onClick="createVoiceOtpEnrollment()"
+                    >
+                      Create
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-create"
+                      onClick="initiateVoiceOtpEnrollment()"
+                    >
+                      Initiate
+                    </button><br><br>
+                    <p id="voiceCreated"></p>
+                    <p id="voiceInitiated"></p>
+
+                    <label>OTP Value</label>
+                    <input type="text"
+                    id="enterVoiceOtpValue"
+                    placeholder="OTP Value"
+                    required value=""><br><br>
+                    
+                    <p id="voiceValidated"></p>
+
+                    <!--  <p id="lastValidationSMS" style="color: white;">Last Validation: </p>-->
+                    <!--
+                                        <label for="enterSMSOtpId">OTP ID:</label>
+                                        <input type="text" id="enterSMSOtpId"><br>
+
+                                        <label for="enterSMSValidatorId">Validator ID: </label>
+                                        <input type="text" id="enterSMSValidatorId"><br>-->
+                   
+
+                    <p id="messageDescriptionVoice"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                      type="button"
+                      class="btn btn-create"
+                      style="background-color: green;border-color: green;"
+                      onClick="validateVoiceOtpEnrollment()"
+                    >
+                      Validate
+                    </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Voice Otp Enrollments Modal -->
+          <div id="myModalVoiceOtpEnrollments" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 500px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body" style="background-color: lightgray">
+                  <div class="modal-container">
+                    <p id="totalVoice" style="color: black; text-align: center">
+                      Voice OTP Enrollments
+                    </p>
+                    <p id="voice"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="getVoiceOtpEnrollments()"
+                    id="getVoiceOtpEnrollmentsButton"
+                  >
+                    Get Enrollments
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Voice Otp Enrollment For id Modal -->
+          <div id="myModalVoiceOtpEnrollmentForId" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 500px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body" style="background-color: lightgray">
+                  <div class="modal-container">
+                    <p style="color: black; text-align: center">
+                      Voice OTP Enrollment for Id
+                    </p>
+
+                    <label for="voiceEnForId">User Id</label>
+                    <input id="voiceEnForId" placeholder="User Id" required value="" />
+                    <div id="voiceEn"></div>
+                    
+                    
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="getVoiceOtpEnrollmentForId()"
+                  >
+                    Get Enrollments
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Delete an Voice Enrollment-->
+          <div
+            id="myModalDeleteVoiceOtpEnrollment"
+            class="modal fade"
+            role="dialog"
+          >
+            <div class="modal-dialog" style="width: 500px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-container">
+                    <p id="sms" style="color: black; text-align: center">
+                      Delete Voice OTP Enrollment
+                    </p>
+                    <label for="enterVoiceOtpIdDeleted">Enrollment Id</label>
+                    <input
+                      id="enterVoiceOtpIdDeleted"
+
+                      placeholder="Enrollment Id"
+                      required value=""
+                    /><br />
+
+                    <p style="color: black" id="voiceEnrollmentDeleted"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="deleteVoiceOtpEnrollment()"
+                  >
+                    Delete Enrollment
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--Resend Voice Otp Modal -->
+          <div id="myModalResendVoiceOtp" class="modal fade" role="dialog">
+            <div class="modal-dialog" style="width: 300px">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-body">
+                  <div class="modal-container">
+                    <p class="modal-title-body" style="font-size: larger">
+                      Resend OTP
+                    </p>
+                    <!-- <label class="modal-inputs" for="enterVoiceOtpPrefix"
+                      >Enter Otp Prefix (First 4 digits)
+                    </label>
+                    <input
+                      type="text"
+                      id="enterVoiceOtpPrefix"
+                      placeholder="Otp Prefix"
+                    /><br /><br /> -->
+
+                    <label for="enterVoiceOtpIdResend">Enter Enrollment Id </label>
+                    <input type="text" id="enterVoiceOtpIdResend"><br><br>
+                    <p id="messageDescriptionResendVoiceOtp"></p>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-create"
+                    onClick="requestNewVoiceOtp()"
+                  >
+                    Request OTP
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-close"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="total"></div>
+
+          <div
+            class="container"
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+              grid-auto-rows: auto;
+              grid-gap: 1rem;
+              place-items: center;
+            "
+          >
+            <p id="userinfo"></p>
+          </div>
+        </div>
+      </div>
+
+      <script type="text/javascript">
+       // var clientId = "d88844d5-704a-4746-8284-5dd2467318a4";
+        var trial = sessionStorage.getItem("trial");
+        // var token = a_token;
+        var emailOtpId,
+          emailValidatorId,
+          smsOtpId,
+          smsValidatorId,
+          voiceOtpId,
+          voiceValidatorId,
+          emailIdToBeDeleted;
+
+        fetch(`https://helpdesk.verify.ibm.com/v2.0/Users`, {
+          method: "GET",
+          headers: {
+            authorization: `Bearer ${trial}`,
+            "content-type": "application/scim+json",
+            accept: "application/scim+json",
+          },
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            document
+              .querySelector("#total")
+              .insertAdjacentHTML(
+                "beforebegin",
+                `<p class="totalusers"><b>Total users: ${data.totalResults}</p>`
+              );
+            const html = data.Resources.map((user) => {
+              if (user.hasOwnProperty("phoneNumbers")) {
+                return `
+            <div class="user">
+                    
+                            <div class="card card-border" style="width: 18rem;height:22rem;">
+                                <div class="card-body">
+                                  <h5 class="card-title"style="text-transform:capitalize; color:black; font-weight:bold;">${user.name.formatted}</h5>
+                                  <p class="card-text"  >
+                                    <p class="info"><b>User Name:</b> ${user.userName}</p>
+                                    <p class="info"><b>Full Name:</b> ${user.name.formatted}</p>
+                                    <p class="info"><b>User Id:</b> ${user.id}</p>
+                                    <p class="info"><b>Active:</b> ${user.active}</p>
+                                    <p class="info"><b>Email Id:</b> ${user.emails[0].value}</p>
+                                    <p class="info"><b>Phone No. :</b> ${user.phoneNumbers[0].value}</p>
+                                 </p>
+                                </div>
+                              </div>
+                       
+                
+              
+            </div>
+            
+            `;
+              } else {
+                return `
+            <div class="user">
+                
+                   
+                            <div class="card card-border" style="width: 18rem;height:22rem; ">
+                                <div class="card-body">
+                                  <h5 class="card-title" style="text-transform:capitalize; color:black; font-weight:bold;">${user.name.formatted}</h5>
+                                  <p class="card-text" >
+                                    <p class="info"><b>User Name:</b> ${user.userName}</p>
+                                    <p class="info"><b>Full Name:</b> ${user.name.formatted}</p>
+                                    <p class="info"><b>User Id:</b> ${user.id}</p>
+                                    <p class="info"><b>Active:</b> ${user.active}</p>
+                                    <p class="info"><b>Email Id:</b> ${user.emails[0].value}</p>
+                                    <p class="info"><b>Phone No.:</b></p>
+                                    </p>
+                                </div>
+                              </div>
+                       
+              
+            </div>
+            
+            `;
+              }
+            }).join("");
+            document
+              .querySelector("#userinfo")
+              .insertAdjacentHTML("beforebegin", html);
+          })
+          .catch((err) => {
+            alert(err);
+          });
+
+          function logout() {
+          let _body = `client_id=f60992ef-bc1b-453b-86e2-fffcecea6b19&client_secret=1eL8rsMZJf&token=${trial}`;
+
+          fetch(
+            `https://helpdesk.verify.ibm.com:443/v1.0/endpoint/default/revoke`,
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/x-www-form-urlencoded",
+                accept: "application/json",
+              },
+              body: _body,
+            }
+          )
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function createEmailOtpEnrollment() {
+          var userid = document.getElementById("enterUserId").value;
+          var email = document.getElementById("enterEmail").value;
+
+          if(document.getElementById('enterUserId').validity.valueMissing === true){
+            alert("User id is a required field");
+          }
+          if(document.getElementById('enterEmail').validity.valueMissing === true){
+            alert("Email is a required field");
+          }
+          //var ids;
+          let _data = {
+            owner: `${userid}`,
+            isEnabled: true,
+            attributes: {
+              otpDeliveryEmailAddress: `${email}`,
+            },
+          };
+          fetch("https://helpdesk.verify.ibm.com/v1.0/authnmethods/emailotp", {
+            method: "POST",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/json",
+              accept: "application/json",
+            },
+            body: JSON.stringify(_data),
+          })
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+              //ids=response.split('/');
+              return response.json().then((data) => {
+                // $("#lastValidation").append(data.lastValidation),
+                $("#otpid").append(data.lastValidation.split("/")[2]),
+                  $("#validatorid").append(data.lastValidation.split("/")[4]),
+                  (emailValidatorId = data.lastValidation.split("/")[4]),
+                  (emailOtpId = data.lastValidation.split("/")[2]);
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+
+          // emailOtp = data.lastValidation.split('/')[2];
+          // emailValidator = data.lastValidation.split('/')[4];
+          // console.log(emailOtp);
+          // validateEmailOtpEnrollment();
+        }
+
+        function validateEmailOtpEnrollment() {
+          // var otpId = document.getElementById('enterOtpId').value;
+          // var validatorId = document.getElementById('enterValidatorId').value;
+          var otpValue = document.getElementById("enterOtpValue").value;
+          var validatorId = emailValidatorId;
+          var otpId = emailOtpId;
+
+          if(document.getElementById('enterOtpValue').validity.valueMissing === true){
+            alert("Otp Value is a required field");
+          }
+
+          let _otp = {
+            otp: `${otpValue}`,
+          };
+
+          fetch(
+            `https://helpdesk.verify.ibm.com/v1.0/authnmethods/emailotp/${otpId}/validator/${validatorId}`,
+            {
+              method: "POST",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+              body: JSON.stringify(_otp),
+            }
+          )
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+              return response.json().then((data) => {
+                // $("#messageDescription").append(data.messageDescription);
+                document.getElementById(
+                  "messageDescription"
+                ).innerHTML = `Message Description: ${data.messageDescription} `;
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function requestNewEmailOtp() {
+          var otpPrefix = document.getElementById("enterEmailOtpPrefix").value;
+          // var otp_Id = document.getElementById('enterEmailOtpIdResend').value;
+          var otp_Id = emailOtpId;
+
+          if(document.getElementById('enterEmailOtpPrefix').validity.valueMissing === true){
+            alert("Otp Prefix is a required field");
+          }
+
+          let _otpResend = {
+            correlation: `${otpPrefix}`,
+          };
+
+          fetch(
+            `https://helpdesk.verify.ibm.com/v1.0/authnmethods/emailotp/${otp_Id}/validator`,
+            {
+              method: "POST",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+              body: JSON.stringify(_otpResend),
+            }
+          )
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+              return response.json().then((data) => {
+                //$("#messageDescriptionResendEmailOtp").append(
+                //  data.messageDescription
+                // );
+                document.getElementById(
+                  "messageDescriptionResendEmailOtp"
+                ).innerHTML = `Message Description: ${data.messageDescription} `;
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function getEmailOtpEnrollments() {
+          $("#getEmailOtpEnrollmentsButton").attr("disabled", true);
+          fetch(`https://helpdesk.verify.ibm.com/v1.0/authnmethods/emailotp/`, {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/json",
+              accept: "application/json",
+            },
+          })
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              document
+              .querySelector("#totalEmail")
+              .insertAdjacentHTML(
+                "afterend",
+                `<p style="color:black">Total enrollments: ${data.total}</p>`
+              );
+              const html = data.emailotp
+                .map((emailotp) => {
+                  return `
+            <div class="emailEnrollments">
+                    
+                            <div class="card card-border" style="width:400px;height:fit-content;border: transparent solid 1px">
+                                <div class="card-body">
+                                  <div class="card-text"  >
+                                    <p class="info"><b>Owner:</b> ${emailotp.owner}</p>
+                                    <p class="info"><b>Enrollment id:</b> ${emailotp.id}</p>
+                                    <p class="info"><b>Email:</b> ${emailotp.attributes.otpDeliveryEmailAddress}</p>
+                                 </div>
+                                </div>
+                              </div>              
+            </div>
+            
+            `;
+                });
+                // .join("");
+              document
+                .querySelector("#email")
+                .insertAdjacentHTML("beforebegin", html);
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function getEmailOtpEnrollmentForId() {
+          var userId = document.getElementById('emailEnForId').value;
+
+          if(document.getElementById('emailEnForId').validity.valueMissing === true){
+            alert("User Id is a required field");
+            // $("#getEmailOtpEnrollmentForIdButton").attr("disabled", false);
+          }
+          // $("#getEmailOtpEnrollmentForIdButton").attr("disabled", true);
+          // $('#myModalEmailOtpEnrollmentForId').on('hidden.bs.modal', function () {
+          //   $("#emailEn")[0].removeData();
+          //   })
+          fetch(`https://helpdesk.verify.ibm.com/v1.0/authnmethods/emailotp/`, {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/json",
+              accept: "application/json",
+            },
+          })
+            .then((response) => {
+              return response.json();
+            })
+            .then((data) => {
+              const html = data.emailotp
+                .map((emailotp) => {
+                  if(emailotp.owner === userId){
+                    return `
+            <div class="emailEnrollments">
+                    
+                            <div class="card card-border" style="width:400px;height:fit-content;border: transparent solid 1px">
+                                <div class="card-body">
+                                  <div class="card-text"  >
+                                    <p class="info"><b>Owner:</b> ${emailotp.owner}</p>
+                                    <p class="info"><b>Enrollment id:</b> ${emailotp.id}</p>
+                                    <p class="info"><b>Email:</b> ${emailotp.attributes.otpDeliveryEmailAddress}</p>
+                                 </div>
+                                </div>
+                              </div>              
+            </div>
+            
+            `;
+                  }
+                  
+                })
+                .join("");
+              document
+                .querySelector("#emailEn")
+                .insertAdjacentHTML("afterend", html);
+                
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function deleteEmailOtpEnrollment() {
+          var otpId = document.getElementById("enterEmailOtpIdDeleted").value;
+
+          if(document.getElementById('enterEmailOtpIdDeleted').validity.valueMissing === true){
+            alert("Otp Id is a required field");
+          }
+
+          fetch(
+            `https://helpdesk.verify.ibm.com/v1.0/authnmethods/emailotp/${otpId}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+            }
+          )
+            .then((response) => {
+              //alert(response.status);
+              console.log(response);
+              
+              if (response.status == 204) {
+                document.getElementById(
+                  "emailEnrollmentDeleted"
+                ).innerHTML = `Email otp enrollment with id ${otpId} has been deleted. `;
+              }
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function createSMSOtpEnrollment() {
+          var userId = document.getElementById("enterSMSUserId").value;
+          var mobile = document.getElementById("enterMobile").value;
+          mobile = '91' + mobile;
+
+          if(document.getElementById('enterSMSUserId').validity.valueMissing === true){
+            alert("User Id is a required field");
+          }
+          if(document.getElementById('enterMobile').validity.valueMissing === true){
+            alert("Mobile is a required field");
+          }
+
+          let _sms = {
+            owner: `${userId}`,
+            isEnabled: true,
+            attributes: {
+              otpDeliveryMobileNumber:  `${mobile}`,
+            },
+          };
+          fetch("https://helpdesk.verify.ibm.com/v1.0/authnmethods/smsotp", {
+            method: "POST",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/json",
+              accept: "application/json",
+            },
+            body: JSON.stringify(_sms),
+          })
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+              return response.json().then((info) => {
+                $("#lastValidationSMS").append(info.lastValidation),
+                  (smsValidatorId = info.lastValidation.split("/")[4]),
+                  (smsOtpId = info.lastValidation.split("/")[2]);
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function validateSMSOtpEnrollment() {
+          // var otpId = document.getElementById('enterSMSOtpId').value;
+          // var validatorId = document.getElementById('enterSMSValidatorId').value;
+          var otpValue = document.getElementById("enterSMSOtpValue").value;
+          var otpId = smsOtpId;
+          var validatorId = smsValidatorId;
+
+          if(document.getElementById('enterSMSOtpValue').validity.valueMissing === true){
+            alert("Otp Value is a required field");
+          }
+
+          let _otp = {
+            otp: `${otpValue}`,
+          };
+
+          fetch(
+            `https://helpdesk.verify.ibm.com/v1.0/authnmethods/smsotp/${otpId}/validator/${validatorId}`,
+            {
+              method: "POST",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+              body: JSON.stringify(_otp),
+            }
+          )
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+              return response.json().then((data) => {
+                //$("#messageDescriptionSMS").append(data.messageDescription);
+                document.getElementById(
+                  "messageDescriptionSMS"
+                ).innerHTML = `Message Description: ${data.messageDescription} `;
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function requestNewSMSOtp() {
+          var otpPrefix = document.getElementById("enterSMSOtpPrefix").value;
+          // var otp_Id = document.getElementById('enterSMSOtpIdResend').value;
+          var otp_Id = smsOtpId;
+
+          if(document.getElementById('enterSMSOtpPrefix').validity.valueMissing === true){
+            alert("Otp Prefix is a required field");
+          }
+
+          let _otpResend = {
+            correlation: `${otpPrefix}`,
+          };
+
+          fetch(
+            `https://helpdesk.verify.ibm.com/v1.0/authnmethods/smsotp/${otp_Id}/validator`,
+            {
+              method: "POST",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+              body: JSON.stringify(_otpResend),
+            }
+          )
+            .then((response) => {
+              // alert(response);
+              console.log(response);
+              return response.json().then((data) => {
+                document.getElementById(
+                  "messageDescriptionResendSMSOtp"
+                ).innerHTML = `Message Description: ${data.messageDescription} `;
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function getSMSOtpEnrollments() {
+          //var { URL, URLSearchParams } = require('url');
+          var userId = "6520010OXM";
+          //var url = new URL(`http://desk.verify.ibm.com/v2.0/factors/smsotp`);
+          //var params ={userId : `${userId}` };
+          //url.search=new URLSearchParams(params).toString();
+          $("#getSMSOtpEnrollmentsButton").attr("disabled", true);
+          fetch(`https://helpdesk.verify.ibm.com/v1.0/authnmethods/smsotp/`, {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/json",
+              accept: "application/json",
+            },
+          })
+            .then((response) => {
+              console.log(response.status);
+              return response.json();
+            })
+            .then((data) => {
+              document
+              .querySelector("#totalSms")
+              .insertAdjacentHTML(
+                "afterend",
+                `<p style="color:black">Total enrollments: ${data.total}</p>`
+              );
+              const html = data.smsotp
+                .map((smsotp) => {
+                  return `
+            <div class="smsEnrollments">
+                    
+                            <div class="card card-border" style="width:400px;height:fit-content;border: transparent solid 1px">
+                                <div class="card-body">
+                                  <div class="card-text"  >
+                                    <p class="info"><b>Owner:</b> ${smsotp.owner}</p>
+                                    <p class="info"><b>Enrollment id:</b> ${smsotp.id}</p>
+                                    <p class="info"><b>Mobile number:</b> ${smsotp.attributes.otpDeliveryMobileNumber}</p>
+                                 </div>
+                                </div>
+                              </div>              
+            </div>
+            
+            `;
+                })
+                .join("");
+              document
+                .querySelector("#sms")
+                .insertAdjacentHTML("beforebegin", html);
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function getSMSOtpEnrollmentForId() {
+          //var { URL, URLSearchParams } = require('url');
+          var userId = document.getElementById("smsEnForId").value;
+          //var url = new URL(`http://desk.verify.ibm.com/v2.0/factors/smsotp`);
+          //var params ={userId : `${userId}` };
+          //url.search=new URLSearchParams(params).toString();
+
+          if(document.getElementById('smsEnForId').validity.valueMissing === true){
+            alert("User Id is a required field");
+          }
+
+          fetch(`https://helpdesk.verify.ibm.com/v1.0/authnmethods/smsotp/`, {
+            method: "GET",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/json",
+              accept: "application/json",
+            },
+          })
+            .then((response) => {
+              console.log(response.status);
+              return response.json();
+            })
+            .then((data) => {
+              const html = data.smsotp
+                .map((smsotp) => {
+
+                  if(smsotp.owner === userId){
+                    return `
+            <div class="smsEnrollments">
+                    
+                            <div class="card card-border" style="width:400px;height:fit-content;border: transparent solid 1px">
+                                <div class="card-body">
+                                  <div class="card-text"  >
+                                    <p class="info"><b>Owner:</b> ${smsotp.owner}</p>
+                                    <p class="info"><b>Enrollment id:</b> ${smsotp.id}</p>
+                                    <p class="info"><b>Mobile number:</b> ${smsotp.attributes.otpDeliveryMobileNumber}</p>
+                                 </div>
+                                </div>
+                              </div>              
+            </div>
+            
+            `;
+
+                  }
+                  
+                })
+                .join("");
+              document
+                .querySelector("#smsEn")
+                .insertAdjacentHTML("afterend", html);
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function deleteSMSOtpEnrollment() {
+          var otpId = document.getElementById("enterSmsOtpIdDeleted").value;
+
+          if(document.getElementById('enterSmsOtpIdDeleted').validity.valueMissing === true){
+            alert("Otp Id is a required field");
+          }
+
+          fetch(
+            `https://helpdesk.verify.ibm.com/v1.0/authnmethods/smsotp/${otpId}`,
+            {
+              method: "DELETE",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+            }
+          )
+            .then((response) => {
+              //alert(response.status);
+              console.log(response);
+              if (response.status == 204) {
+                document.getElementById(
+                  "smsEnrollmentDeleted"
+                ).innerHTML = `Sms otp enrollment with id ${otpId} has been deleted. `;
+              }
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function createVoiceOtpEnrollment() {
+          var userId = document.getElementById("enterVoiceUserId").value;
+          var mobile = document.getElementById("enterVoiceMobile").value;
+          mobile = '91' + mobile;
+
+          if(document.getElementById('enterVoiceUserId').validity.valueMissing === true){
+            alert("User Id is a required field");
+          }
+          if(document.getElementById('enterVoiceMobile').validity.valueMissing === true){
+            alert("Mobile is a required field");
+          }
+
+          let _voice = {
+            userId: `${userId}`,
+            enabled: true,
+            phoneNumber: `${mobile}`,
+          };
+          fetch("https://helpdesk.verify.ibm.com/v2.0/factors/voiceotp", {
+            method: "POST",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/json",
+              //accept: "application/json",
+            },
+            body: JSON.stringify(_voice),
+          })
+            .then((response) => {
+              //alert(response.status);
+              console.log(response);
+              if (response.status == "201") {
+                document.getElementById(
+                  "voiceCreated"
+                ).innerHTML = `Message Description: Voice enrollment created successfully. `;
+              }
+              return response.json().then((info) => {
+                $("#idd").append(info.id);
+                voiceOtpId = info.id;
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function initiateVoiceOtpEnrollment() {
+          var otpId = voiceOtpId;
+
+          let _prefix = {
+            correlation: "2304",
+          };
+
+          fetch(
+            `https://helpdesk.verify.ibm.com/v2.0/factors/voiceotp/${otpId}/verifications`,
+            {
+              method: "POST",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                // accept: "application/json",
+              },
+              body: JSON.stringify(_prefix),
+            }
+          )
+            .then((response) => {
+              //alert(response.status);
+              console.log(response);
+              if (response.status == "201") {
+                document.getElementById(
+                  "voiceInitiated"
+                ).innerHTML = `Message Description: Voice enrollment is initiated. `;
+              }
+              return response.json().then((data) => {
+                voiceValidatorId = data.id;
+                console.log
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function getVoiceOtpEnrollments() {  
+         // var uId="6520010OXM";   
+         $("#getVoiceOtpEnrollmentsButton").attr("disabled", true);
+          fetch(`https://helpdesk.verify.ibm.com/v2.0/factors/voiceotp/`,
+            {
+              method: "GET",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+            }
+          )
+            .then((response) => {
+              console.log(response);
+              return response.json();
+            })
+            .then((data) => {
+              document
+              .querySelector("#totalVoice")
+              .insertAdjacentHTML(
+                "afterend",
+                `<p style="color:black">Total enrollments: ${data.total}</p>`
+              );
+              const html = data.voiceotp
+                .map((voiceotp) => {
+                  return `
+            <div class="voiceEnrollments">
+                    
+                            <div class="card card-border" style="width:400px;height:fit-content;border: transparent solid 1px">
+                                <div class="card-body">
+                                  <div class="card-text"  >
+                                    <p class="info"><b>User id:</b> ${voiceotp.userId}</p>
+                                    <p class="info"><b>Enrollment id:</b> ${voiceotp.id}</p>
+                                    <p class="info"><b>Phone Number:</b> ${voiceotp.attributes.phoneNumber}</p>
+                                 </div>
+                                </div>
+                              </div>              
+            </div>
+            
+            `;
+                })
+                .join("");
+              document
+                .querySelector("#voice")
+                .insertAdjacentHTML("beforebegin", html);
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+        function getVoiceOtpEnrollmentForId() {  
+          var userId=document.getElementById("voiceEnForId").value;      
+          
+          if(document.getElementById('voiceEnForId').validity.valueMissing === true){
+            alert("User Id is a required field");
+          }
+          
+          fetch(`https://helpdesk.verify.ibm.com/v2.0/factors/voiceotp/`,
+            {
+              method: "GET",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+            }
+          )
+            .then((response) => {
+              console.log(response);
+              return response.json();
+            })
+            .then((data) => {
+              const html = data.voiceotp
+                .map((voiceotp) => {
+                  if(voiceotp.userId === userId){
+                    return `
+            <div class="voiceEnrollments">
+                    
+                            <div class="card card-border" style="width:400px;height:fit-content;border: transparent solid 1px">
+                                <div class="card-body">
+                                  <div class="card-text"  >
+                                    <p class="info"><b>User id:</b> ${voiceotp.userId}</p>
+                                    <p class="info"><b>Enrollment id:</b> ${voiceotp.id}</p>
+                                    <p class="info"><b>Phone Number:</b> ${voiceotp.attributes.phoneNumber}</p>
+                                 </div>
+                                </div>
+                              </div>              
+            </div>
+            
+            `;
+
+                  }
+
+                  
+                })
+                .join("");
+              document
+                .querySelector("#voiceEn")
+                .insertAdjacentHTML("afterend", html);
+            })
+            .catch((err) => {
+              alert(err);
+            });
+        }
+
+
+        function deleteVoiceOtpEnrollment() {
+          var otpId = document.getElementById("enterVoiceOtpIdDeleted").value;
+
+          if(document.getElementById('enterVoiceOtpIdDeleted').validity.valueMissing === true){
+            alert("Otp Id is a required field");
+          }
+
+          fetch(`https://helpdesk.verify.ibm.com/v2.0/factors/voiceotp//${otpId}`, {
+            method: "DELETE",
+            headers: {
+              authorization: `Bearer ${trial}`,
+              "content-type": "application/json",
+              accept: "application/json",
+            },
+          })
+            .then((response) => {
+              //alert(response.status);
+              console.log(response);
+              if (response.status == 204) {
+                document.getElementById(
+                  "voiceEnrollmentDeleted"
+                ).innerHTML = `Voice otp enrollment with id ${otpId} has been deleted. `;
+              }
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function validateVoiceOtpEnrollment() {
+          // var otpId = document.getElementById('enterSMSOtpId').value;
+          // var validatorId = document.getElementById('enterSMSValidatorId').value;
+          var otpValue = document.getElementById("enterVoiceOtpValue").value;
+          var otpId = voiceOtpId;
+          var validatorId = voiceValidatorId;
+
+          let _otp = {
+            otp: `${otpValue}`,
+          };
+
+          fetch(
+            `https://helpdesk.verify.ibm.com/factors/v2.0/factors/voiceotp/${otpId}/verifications/${validatorId}`,
+            {
+              method: "POST",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+              body: JSON.stringify(_otp),
+            }
+          )
+            .then((response) => {
+              //alert(response.status);
+              console.log(response);
+              if (response.status == "204") {
+                document.getElementById(
+                  "voiceValidated"
+                ).innerHTML = `Message Description: Voice enrollment validated successfully. `;
+              }
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+        function requestNewVoiceOtp() {
+          //var otpPrefix = document.getElementById("enterSMSOtpPrefix").value;
+          var otp_Id = document.getElementById('enterVoiceOtpIdResend').value;
+          //var otp_Id = voiceOtpId;
+
+          // if(document.getElementById('enterSMSOtpPrefix').validity.valueMissing === true){
+          //   alert("Otp Prefix is a required field");
+          // }
+
+          let _otpResend = {
+            correlation: `2304`,
+          };
+
+          fetch(
+            `https://helpdesk.verify.ibm.com//factors/v2.0/factors/voiceotp/${otp_Id}/verifications`,
+            {
+              method: "POST",
+              headers: {
+                authorization: `Bearer ${trial}`,
+                "content-type": "application/json",
+                accept: "application/json",
+              },
+              body: JSON.stringify(_otpResend),
+            }
+          )
+            .then((response) => {
+
+               //alert(response.status);
+
+              console.log(response);
+              return response.json().then((data) => {
+                if(response.ok){
+                  document.getElementById(
+                  "messageDescriptionResendVoiceOtp"
+                ).innerHTML = `Message Description: Otp Sent Successfully `;
+                }
+                else{
+                  document.getElementById(
+                  "messageDescriptionResendVoiceOtp"
+                ).innerHTML = `Message Description: Otp resend unsuccessful `;
+
+                }
+                
+              });
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+      </script>
+    </div>
+    <footer class="foot"></footer>
+  </body>
+</html>

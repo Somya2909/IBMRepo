@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+  function openSlideMenu() {
+    var menu = document.getElementById('menu');
+    var content = document.getElementById('content');
+
+    if (menu.style.width == '300px' && content.style.width == '300px') {
+      menu.style.width = '0';
+      content.style.width = '0';
+
+    } else {
+      menu.style.width = '300px';
+      content.style.width = '300px';
+
+    }
+
+  }
+
+
+</script>
+<script src="bootstrap-switch.js"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+  <title>Profile</title>
+  <meta content="width=device-width,initial-scale=1" name="viewport">
+  <link rel="canonical" href="http://www.ibm.com/">
+  <link rel="SHORTCUT ICON" href="//www.ibm.com/favicon.ico" />
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="IBM id Sign-in Template refresh">
+  <meta name="keywords" content="Sign-in Page IBM id">
+  <meta name="geo.country" content="US">
+  <meta name="dcterms.date" content="2014-07-23">
+  <meta name="dcterms.rights" content="&copy; Copyright IBM Corp. 2018">
+  <link rel="manifest" href="https://www.ibm.com/account/ibmidutil/js/idaas/duo/manifest.json">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
+  <script>window.App = window.App || {}, window.App.locale = document.documentElement.lang, "en-US" === window.App.locale && (window.App.locale = "en")</script>
+  <link href="//1.www.s81c.com/common/v18/css/www.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/grid-fluid.css" rel="stylesheet" />
+  <link href="//1.www.s81c.com/common/v18/css/forms.css" rel="stylesheet" />
+  <script type="application/javascript" src="https://www.ibm.com/account/ibmidutil/js/idaas/duo/locales/en.js"></script>
+  <script type="application/javascript"
+    src="https://www.ibm.com/account/ibmidutil/js/idaas/duo/assets/prod.client_ids.js"></script>
+  <link href="https://www.ibm.com/account/ibmidutil/js/idaas/duo/static/css/main.css" rel="stylesheet">
+  <script src="https://use.fontawesome.com/003fb05841.js"></script>
+  <script type = "text/javascript" >
+    function preventBack(){window.history.forward();}
+     setTimeout("preventBack()", 0);
+     window.onunload=function(){null};
+ </script>
+</head>
+
+<body class="bg" style="background-color:#f2f4f8;color: rgb(26, 23, 19);" scroll=no>
+  <header style="background-color:#323232; height: 50px;" class="fixed-header" >
+    <div class="header_bar" >
+      
+        
+        <span class="slide" id="navigationToggler" >
+          <a onClick="openSlideMenu()" id="togg">
+            <i  class="fa fa-bars fa-2x" ></i>
+            <script>
+              $("#togg").click(function(event){
+                $(this).find('i').toggleClass('fa fa-times fa-2x');
+                $(this).find('i').toggleClass('fa fa-bars fa-2x');
+              });
+            </script>
+          </a>
+        </span>
+        
+    
+    
+      <div class="pull-left">
+        <a href="Home.html"><img class="ibm_logo" src="assets/IBM_logo.png" width="60px"/></a>
+      </div>
+
+      
+      
+  
+      <Navbar dark expand="xxl" class="pull-right" id="logout" >
+        <nav class="navbar navbar-expand-xxl">
+                            
+            
+            <button class=" fa fa-user fa-lg navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar2" style="outline-width:0;">
+            
+            </button>
+          
+            
+            <div class="collapse navbar-collapse " id="collapsibleNavbar2">
+              <ul class="navbar-nav" style="list-style-type:none;">
+                <p></p>
+               <div> <strong><li class="nav-item" id="name"></li></strong></div>
+              <div><li class="nav-item"><a class="nav-link" href="Profile.html">Profile</a></li></div>
+               <div> <li class="nav-item"><a class="nav-link" onclick="logout()" href="Redirection.html">Log out</a></li></div>
+              </ul>
+            </div>
+          </nav>
+    
+       </Navbar>
+      
+    </div>
+    
+   </header>
+   <div>
+
+    <div class="container" style="padding-top: 1px;padding-bottom: 200px;">
+
+      <div>
+        <p></p>
+      </div>
+      <div>
+        <h1 id="Profile" style="font-size:x-large; text-align: center;margin-top:30px;"></h1>
+      </div>
+      <nav class="breadcrumb" style="background-color:lightgray;">
+        <a class="breadcrumb-item"  href="Home.html">Home</a>
+        <a class="breadcrumb-item active">Profile</a>
+      </nav>
+      <h3 id="Id"></h3>
+      <div class="card" style="border: #323232 solid 1px; background-color: transparent;">
+        <div class="card-header" style="border-bottom: #323232 solid 1px;">
+          <h2 style="font-size:x-large;"><b>Profile</b></h2>
+        </div>
+        <div class="card-body">
+          <label for="UserName" style="color: steelblue;"><b>User Name:</b></label>
+          <h3 id="UserName" style="color:black;text-transform: capitalize;"></h3>
+          <label for="role" style="color: steelblue;"><b>Role:</b></label>
+          <h3 id="role" style="color: black;">Help Desk User</h3>
+        </div>
+      </div>
+      
+      
+      
+
+
+      <div id="content">
+        <div id="menu" class="nav" style="overflow-y: hidden;display: flex;flex-direction: column;">   
+          <button class="btn btn-block" ><a href="Home.html">Home</a></button>              
+          <button class="btn btn-block" ><a href="Users.html">Manage Users</a></button>
+          <button class="btn btn-block" ><a href="ManageAuthenticationFactors.html">Manage Authentication</a></button>
+          <button class="btn btn-block" ><a href="FAQs.html">FAQs</a></button>
+          <button class="btn btn-block" ><a href="AboutUs.html">About Us</a></button>
+          
+          
+        </div>
+        
+        
+      </div>
+
+
+      <p style="margin-top:30px;" id="user"></p>
+      
+
+
+
+
+    </div>
+    <script type="text/javascript">
+       var user_name = sessionStorage.getItem("userName");
+       console.log(user_name);
+       $("#UserName").append(user_name);
+
+       var trial = sessionStorage.getItem("trial");
+      // var token = a_token;
+
+      function logout() {
+          let _body = `client_id=f60992ef-bc1b-453b-86e2-fffcecea6b19&client_secret=1eL8rsMZJf&token=${trial}`;
+
+          fetch(
+            `https://helpdesk.verify.ibm.com:443/v1.0/endpoint/default/revoke`,
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/x-www-form-urlencoded",
+                accept: "application/json",
+              },
+              body: _body,
+            }
+          )
+            .then((response) => {
+              //alert(response);
+              console.log(response);
+            })
+
+            .catch((err) => {
+              console.log(err);
+            });
+        }
+
+    </script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  </div>
+
+  </div>
+  <footer class='foot'>
+
+  </footer>
+</body>
+
+</html>
