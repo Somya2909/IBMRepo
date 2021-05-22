@@ -1,0 +1,4 @@
+applications:
+- name: IBM-HelpDesk
+  random-route: true
+  memory: 256M
